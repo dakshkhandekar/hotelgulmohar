@@ -217,7 +217,7 @@ export default function App() {
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
         <img
-          src="/image.png"
+          src="/image copy.png"
           alt="Hotel Gulmohar"
           className="absolute inset-0 w-full h-full object-cover"
         />
