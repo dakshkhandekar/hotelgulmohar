@@ -175,11 +175,11 @@ export default function App() {
           <span className="text-stone-900 text-xs font-bold tracking-wide uppercase">For Booking</span>
           <span className="text-stone-700 text-xs">|</span>
           <a
-            href="tel:+11234567890"
+            href="tel:+919157912719"
             className="flex items-center gap-1.5 text-stone-900 text-xs font-semibold tracking-wide hover:text-stone-700 transition-colors"
           >
             <Phone className="w-3.5 h-3.5" />
-            +1 (123) 456-7890
+            +91 9157912719
           </a>
           <span className="hidden sm:block text-stone-700 text-xs">|</span>
           <a
@@ -501,7 +501,7 @@ export default function App() {
 
           <div className="max-w-2xl mx-auto grid sm:grid-cols-2 gap-6">
             <a
-              href="tel:+11234567890"
+              href="tel:+919157912719"
               className="group flex flex-col items-center text-center gap-5 p-10 border border-stone-100 hover:border-amber-300 shadow-sm hover:shadow-lg transition-all duration-300"
             >
               <div className="w-16 h-16 rounded-full bg-amber-50 border-2 border-amber-200 flex items-center justify-center group-hover:bg-amber-400 group-hover:border-amber-400 transition-all duration-300">
@@ -509,7 +509,7 @@ export default function App() {
               </div>
               <div>
                 <p className="text-xs text-stone-400 tracking-widest uppercase mb-2">Call Us</p>
-                <p className="font-serif text-2xl text-stone-900 mb-1">+1 (123) 456-7890</p>
+                <p className="font-serif text-2xl text-stone-900 mb-1">+91 9157912719</p>
                 <p className="text-stone-400 text-xs">Available 24 hours, 7 days a week</p>
               </div>
             </a>
@@ -572,7 +572,7 @@ export default function App() {
               <div className="space-y-2 text-sm">
                 <p className="flex items-center gap-2">
                   <Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                  +1 (123) 456-7890
+                  +91 9157912719
                 </p>
                 <p className="flex items-center gap-2">
                   <Mail className="w-3.5 h-3.5 text-amber-400 shrink-0" />
@@ -580,7 +580,7 @@ export default function App() {
                 </p>
                 <p className="flex items-start gap-2">
                   <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
-                  12 Grand Boulevard, Skyline City, SC 10001
+                  4A, Patansai, Mumbai-Goa Road, Chikani Patansai, Raigad, Maharashtra, 402106
                 </p>
               </div>
             </div>
