@@ -171,7 +171,9 @@ export default function App() {
         </div>
 
         {/* Contact Info Strip */}
-        <div className="bg-amber-400 px-6 md:px-10 py-1.5 flex flex-wrap items-center justify-center gap-6">
+        <div className="bg-amber-400 px-6 md:px-10 py-1.5 flex flex-wrap items-center justify-center gap-4">
+          <span className="text-stone-900 text-xs font-bold tracking-wide uppercase">For Booking</span>
+          <span className="text-stone-700 text-xs">|</span>
           <a
             href="tel:+11234567890"
             className="flex items-center gap-1.5 text-stone-900 text-xs font-semibold tracking-wide hover:text-stone-700 transition-colors"
