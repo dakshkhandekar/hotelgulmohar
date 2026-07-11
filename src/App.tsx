@@ -127,9 +127,7 @@ export default function App() {
         {/* Logo Row */}
         <div className="flex items-center justify-between px-6 md:px-10 py-4">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-amber-400 flex items-center justify-center">
-              <Star className="w-4 h-4 text-stone-900 fill-stone-900" />
-            </div>
+            <img src="/image copy copy.png" alt="Hotel Gulmohar Logo" className="w-12 h-12 object-contain" />
             <span className="text-white font-serif text-xl tracking-widest uppercase">
               Hotel Gulmohar
             </span>
