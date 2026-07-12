@@ -597,7 +597,7 @@ export default function App() {
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
               <div className="text-stone-600">
                 <p className="font-serif text-base text-stone-900">
-                  NH 17, Chikani, Maharashtra 402106
+                  NH 17, Nagothane, Chikani, Maharashtra 402106
                 </p>
                 <p className="text-xs text-stone-500 font-mono">
                   18.530805° N, 73.144267° E
@@ -667,7 +667,7 @@ export default function App() {
                 </p>
                 <p className="flex items-start gap-2">
                   <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
-                  NH 17, Chikani, Maharashtra 402106
+                  NH 17, Nagothane, Chikani, Maharashtra 402106
                 </p>
               </div>
             </div>
