@@ -537,7 +537,7 @@ export default function App() {
             <div className="relative shadow-lg border border-stone-100 overflow-hidden group">
               <iframe
                 title="Hotel Gulmohar Location"
-                src="https://www.google.com/maps?q=4A+Patansai+Mumbai-Goa+Road+Chikani+Patansai+Raigad+Maharashtra+402106&output=embed"
+                src="https://www.google.com/maps?q=18.530805,73.144267&z=17&output=embed"
                 className="w-full h-[400px] grayscale group-hover:grayscale-0 transition-all duration-700"
                 style={{ border: 0 }}
                 loading="lazy"
@@ -545,7 +545,7 @@ export default function App() {
                 allowFullScreen
               />
               <a
-                href="https://www.google.com/maps/search/?api=1&query=4A+Patansai+Mumbai-Goa+Road+Chikani+Patansai+Raigad+Maharashtra+402106"
+                href="https://www.google.com/maps/place/Hotel+Gulmohar/@18.5309313,73.1447904,17z/data=!4m14!1m7!3m6!1s0x3be813999880ea2b:0x59b2fca4d43de5!2sHotel+Gulmohar!8m2!3d18.530805!4d73.144267!16s%2Fg%2F1tgdgg8p!3m5!1s0x3be813999880ea2b:0x59b2fca4d43de5!8m2!3d18.530805!4d73.144267!16s%2Fg%2F1tgdgg8p?entry=ttu"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute bottom-4 right-4 inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold tracking-wide uppercase px-4 py-2.5 hover:bg-amber-400 hover:text-stone-900 transition-colors duration-200 shadow-md"
