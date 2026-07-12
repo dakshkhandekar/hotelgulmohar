@@ -537,14 +537,15 @@ export default function App() {
             <div className="relative shadow-lg border border-stone-100 overflow-hidden group">
               <iframe
                 title="Hotel Gulmohar Location"
-                src="https://maps.google.com/maps?q=4A%20Patansai%20Mumbai-Goa%20Road%20Chikani%20Patansai%20Raigad%20Maharashtra%20402106&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://www.google.com/maps?q=4A+Patansai+Mumbai-Goa+Road+Chikani+Patansai+Raigad+Maharashtra+402106&output=embed"
                 className="w-full h-[400px] grayscale group-hover:grayscale-0 transition-all duration-700"
                 style={{ border: 0 }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
               />
               <a
-                href="https://maps.google.com/?q=4A+Patansai+Mumbai-Goa+Road+Chikani+Patansai+Raigad+Maharashtra+402106"
+                href="https://www.google.com/maps/search/?api=1&query=4A+Patansai+Mumbai-Goa+Road+Chikani+Patansai+Raigad+Maharashtra+402106"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute bottom-4 right-4 inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold tracking-wide uppercase px-4 py-2.5 hover:bg-amber-400 hover:text-stone-900 transition-colors duration-200 shadow-md"
