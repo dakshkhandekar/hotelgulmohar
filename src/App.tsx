@@ -537,7 +537,7 @@ export default function App() {
             <div className="relative shadow-lg border border-stone-100 overflow-hidden group">
               <iframe
                 title="Hotel Gulmohar Location"
-                src="https://www.google.com/maps?q=18.530805,73.144267&z=17&output=embed"
+                src="https://maps.google.com/maps?q=18.530805,73.144267&z=17&output=embed"
                 className="w-full h-[400px] grayscale group-hover:grayscale-0 transition-all duration-700"
                 style={{ border: 0 }}
                 loading="lazy"
