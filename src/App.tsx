@@ -170,6 +170,8 @@ export default function App() {
 
         {/* Contact Info Strip */}
         <div className="bg-amber-400 px-6 md:px-10 py-1.5 flex flex-wrap items-center justify-center gap-4">
+          <span className="text-stone-900 text-xs font-bold tracking-wide uppercase">GST No: 27AMRPK6595M1ZY</span>
+          <span className="text-stone-700 text-xs">|</span>
           <span className="text-stone-900 text-xs font-bold tracking-wide uppercase">For Booking</span>
           <span className="text-stone-700 text-xs">|</span>
           <a
