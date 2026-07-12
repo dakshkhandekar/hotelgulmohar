@@ -525,6 +525,35 @@ export default function App() {
               </div>
             </a>
           </div>
+
+          {/* ── Map Widget ── */}
+          <div className="mt-12">
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <MapPin className="w-4 h-4 text-amber-600" />
+              <p className="text-xs tracking-[0.3em] uppercase font-semibold text-stone-400">
+                Find Us on the Map
+              </p>
+            </div>
+            <div className="relative shadow-lg border border-stone-100 overflow-hidden group">
+              <iframe
+                title="Hotel Gulmohar Location"
+                src="https://maps.google.com/maps?q=4A%20Patansai%20Mumbai-Goa%20Road%20Chikani%20Patansai%20Raigad%20Maharashtra%20402106&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                className="w-full h-[400px] grayscale group-hover:grayscale-0 transition-all duration-700"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <a
+                href="https://maps.google.com/?q=4A+Patansai+Mumbai-Goa+Road+Chikani+Patansai+Raigad+Maharashtra+402106"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-4 right-4 inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold tracking-wide uppercase px-4 py-2.5 hover:bg-amber-400 hover:text-stone-900 transition-colors duration-200 shadow-md"
+              >
+                <MapPin className="w-3.5 h-3.5" />
+                Open in Google Maps
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
