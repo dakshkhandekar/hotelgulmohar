@@ -495,8 +495,8 @@ export default function App() {
               </p>
               <div className="grid grid-cols-3 gap-6">
                 {[
-                  { value: '95+', label: 'Years of Service' },
-                  { value: '180', label: 'Rooms & Suites' },
+                  { value: '50+', label: 'Years of Service' },
+                  { value: '25', label: 'Rooms & Suites' },
                   { value: '4.9', label: 'Guest Rating' },
                 ].map(({ value, label }) => (
                   <div key={label} className="text-center">
@@ -510,7 +510,7 @@ export default function App() {
             </div>
             <div className="relative">
               <img
-                src="/hotel-gulmohar-night.png"
+                src="/hotel-gulmohar-facade.png"
                 alt="Hotel Gulmohar illuminated facade at night"
                 className="w-full h-96 md:h-[520px] object-cover shadow-xl"
               />
