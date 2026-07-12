@@ -178,9 +178,14 @@ export default function App() {
         <div className="flex items-center justify-between px-6 md:px-10 py-4">
           <div className="flex items-center gap-3">
             <img src="/image copy copy.png" alt="Hotel Gulmohar Logo" className="w-12 h-12 object-contain" />
-            <span className="text-white font-serif text-xl tracking-widest uppercase">
-              Hotel Gulmohar
-            </span>
+            <div className="flex flex-col">
+              <span className="text-white font-serif text-xl tracking-widest uppercase leading-tight">
+                Hotel Gulmohar
+              </span>
+              <span className="text-amber-400 text-[10px] font-semibold tracking-wide uppercase">
+                GST No: 27AMRPK6595M1ZY
+              </span>
+            </div>
           </div>
 
           {/* Desktop Nav */}
@@ -219,9 +224,7 @@ export default function App() {
         </div>
 
         {/* Contact Info Strip */}
-        <div className="bg-amber-400 px-6 md:px-10 py-1.5 flex flex-wrap items-center justify-center gap-4">
-          <span className="text-stone-900 text-xs font-bold tracking-wide uppercase">GST No: 27AMRPK6595M1ZY</span>
-          <span className="text-stone-700 text-xs">|</span>
+        <div className="bg-amber-400 px-6 md:px-10 py-1.5 flex flex-wrap items-center justify-center md:justify-end gap-4">
           <span className="text-stone-900 text-xs font-bold tracking-wide uppercase">For Booking</span>
           <span className="text-stone-700 text-xs">|</span>
           <a
