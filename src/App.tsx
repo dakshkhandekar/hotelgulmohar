@@ -13,7 +13,7 @@ import {
   Wifi,
   Car,
   Coffee,
-  Waves,
+  Baby,
   ArrowRight,
   Clock,
 } from 'lucide-react';
@@ -85,10 +85,60 @@ const DINING = [
 
 const AMENITIES = [
   { icon: Wifi, label: 'High-Speed Wi-Fi' },
-  { icon: Waves, label: 'Infinity Pool' },
+  { icon: Baby, label: 'Kids Zone' },
   { icon: Car, label: 'Valet Parking' },
   { icon: Coffee, label: 'In-Room Dining' },
 ];
+
+function CountUp({ value }: { value: string }) {
+  // Split the raw value into its numeric part and any prefix/suffix (e.g. "95+", "4.9").
+  const match = value.match(/^(\D*)([\d.]+)(\D*)$/);
+  const prefix = match ? match[1] : '';
+  const target = match ? parseFloat(match[2]) : 0;
+  const suffix = match ? match[3] : '';
+  const decimals = match && match[2].includes('.') ? match[2].split('.')[1].length : 0;
+
+  const [display, setDisplay] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const hasRun = useRef(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0].isIntersecting || hasRun.current) return;
+        hasRun.current = true;
+
+        const duration = 1600;
+        const start = performance.now();
+
+        const tick = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          // easeOutCubic for a smooth deceleration
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setDisplay(target * eased);
+          if (progress < 1) requestAnimationFrame(tick);
+          else setDisplay(target);
+        };
+        requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [target]);
+
+  return (
+    <div ref={ref} className="font-serif text-3xl text-stone-900 mb-1 tabular-nums">
+      {prefix}
+      {display.toFixed(decimals)}
+      {suffix}
+    </div>
+  );
+}
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -169,9 +219,11 @@ export default function App() {
         </div>
 
         {/* Contact Info Strip */}
-        <div className="bg-amber-400 px-6 md:px-10 py-1.5 flex flex-wrap items-center justify-center gap-4">
-          <span className="text-stone-900 text-xs font-bold tracking-wide uppercase">For Booking</span>
-          <span className="text-stone-700 text-xs">|</span>
+        <div className="bg-amber-400 px-6 md:px-10 py-1.5 flex flex-wrap items-center justify-center md:justify-between gap-x-4 gap-y-1">
+          <span className="text-stone-900 text-xs font-bold tracking-wide uppercase">GST No: 27AMRPK6595M1ZY</span>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <span className="text-stone-900 text-xs font-bold tracking-wide uppercase">For Booking</span>
+            <span className="text-stone-700 text-xs">|</span>
           <a
             href="tel:+919157912719"
             className="flex items-center gap-1.5 text-stone-900 text-xs font-semibold tracking-wide hover:text-stone-700 transition-colors"
@@ -187,6 +239,7 @@ export default function App() {
             <Mail className="w-3.5 h-3.5" />
             booking@hotelgulmohar.com
           </a>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -239,10 +292,10 @@ export default function App() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => scrollTo('about')}
-              className="px-8 py-4 bg-amber-400 text-stone-900 text-sm font-bold tracking-widest uppercase hover:bg-amber-300 transition-colors duration-200 flex items-center justify-center gap-2"
+              className="group px-8 py-4 bg-amber-400 text-stone-900 text-sm font-bold tracking-widest uppercase hover:bg-amber-300 transition-colors duration-200 flex items-center justify-center gap-2"
             >
               Discover More
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
             </button>
             <button
               onClick={() => scrollTo('contact')}
@@ -443,14 +496,12 @@ export default function App() {
               </p>
               <div className="grid grid-cols-3 gap-6">
                 {[
-                  { value: '95+', label: 'Years of Service' },
-                  { value: '180', label: 'Rooms & Suites' },
+                  { value: '50+', label: 'Years of Service' },
+                  { value: '25', label: 'Rooms & Suites' },
                   { value: '4.9', label: 'Guest Rating' },
                 ].map(({ value, label }) => (
                   <div key={label} className="text-center">
-                    <div className="font-serif text-3xl text-stone-900 mb-1">
-                      {value}
-                    </div>
+                    <CountUp value={value} />
                     <div className="text-xs text-stone-400 tracking-wide uppercase">
                       {label}
                     </div>
@@ -460,8 +511,8 @@ export default function App() {
             </div>
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=900"
-                alt="Hotel lobby"
+                src="/hotel-gulmohar-facade.png"
+                alt="Hotel Gulmohar illuminated facade at night"
                 className="w-full h-96 md:h-[520px] object-cover shadow-xl"
               />
               <div className="absolute -bottom-6 -left-6 w-40 h-40 border-4 border-amber-400 hidden md:block" />
@@ -534,47 +585,34 @@ export default function App() {
                 Find Us on the Map
               </p>
             </div>
-            <div className="relative shadow-lg border border-stone-100 overflow-hidden group">
-              <div className="w-full h-[400px] relative overflow-hidden bg-gradient-to-br from-stone-200 via-stone-100 to-amber-50">
-                <svg
-                  className="absolute inset-0 w-full h-full opacity-40"
-                  viewBox="0 0 800 400"
-                  preserveAspectRatio="xMidYMid slice"
-                  aria-hidden="true"
-                >
-                  <path d="M0 220 Q 150 180 280 200 T 520 190 T 800 210" fill="none" stroke="#a8a29e" strokeWidth="10" strokeLinecap="round" />
-                  <path d="M0 260 Q 160 240 300 255 T 540 245 T 800 260" fill="none" stroke="#d6d3d1" strokeWidth="6" strokeLinecap="round" />
-                  <path d="M120 0 L 140 400" stroke="#d6d3d1" strokeWidth="4" strokeDasharray="12 12" />
-                  <path d="M420 0 L 460 400" stroke="#d6d3d1" strokeWidth="4" strokeDasharray="12 12" />
-                  <path d="M640 0 L 620 400" stroke="#d6d3d1" strokeWidth="4" strokeDasharray="12 12" />
-                  <circle cx="400" cy="200" r="90" fill="#fef3c7" opacity="0.6" />
-                </svg>
-                <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-                  <div className="bg-white/95 backdrop-blur px-8 py-7 shadow-xl text-center max-w-md border border-stone-100">
-                    <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-amber-50 flex items-center justify-center ring-4 ring-amber-50/50">
-                      <MapPin className="w-6 h-6 text-amber-600" />
-                    </div>
-                    <p className="text-xs tracking-[0.25em] uppercase font-semibold text-stone-400 mb-2">
-                      Hotel Gulmohar
-                    </p>
-                    <p className="font-serif text-lg text-stone-900 leading-snug mb-4">
-                      NH 17, Chikani,<br />Maharashtra 402106
-                    </p>
-                    <p className="text-xs text-stone-500 font-mono mb-5">
-                      18.530805° N, 73.144267° E
-                    </p>
-                    <a
-                      href="https://www.google.com/maps/place/Hotel+Gulmohar/@18.5309313,73.1447904,17z/data=!4m14!1m7!3m6!1s0x3be813999880ea2b:0x59b2fca4d43de5!2sHotel+Gulmohar!8m2!3d18.530805!4d73.144267!16s%2Fg%2F1tgdgg8p!3m5!1s0x3be813999880ea2b:0x59b2fca4d43de5!8m2!3d18.530805!4d73.144267!16s%2Fg%2F1tgdgg8p?entry=ttu"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold tracking-wide uppercase px-5 py-3 hover:bg-amber-400 hover:text-stone-900 transition-colors duration-200 shadow-md"
-                    >
-                      <MapPin className="w-3.5 h-3.5" />
-                      Open in Google Maps
-                    </a>
-                  </div>
-                </div>
+            <div className="relative shadow-lg border border-stone-100 overflow-hidden">
+              <iframe
+                title="Hotel Gulmohar location on Google Maps"
+                src="https://maps.google.com/maps?q=18.530805,73.144267&z=16&hl=en&output=embed"
+                className="w-full h-[400px] block border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
+              <div className="text-stone-600">
+                <p className="font-serif text-base text-stone-900">
+                  NH 17, Nagothane, Chikani, Maharashtra 402106
+                </p>
+                <p className="text-xs text-stone-500 font-mono">
+                  18.530805° N, 73.144267° E
+                </p>
               </div>
+              <a
+                href="https://www.google.com/maps/place/Hotel+Gulmohar/@18.5309313,73.1447904,17z/data=!4m14!1m7!3m6!1s0x3be813999880ea2b:0x59b2fca4d43de5!2sHotel+Gulmohar!8m2!3d18.530805!4d73.144267!16s%2Fg%2F1tgdgg8p!3m5!1s0x3be813999880ea2b:0x59b2fca4d43de5!8m2!3d18.530805!4d73.144267!16s%2Fg%2F1tgdgg8p?entry=ttu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold tracking-wide uppercase px-5 py-3 hover:bg-amber-400 hover:text-stone-900 transition-colors duration-200 shadow-md shrink-0"
+              >
+                <MapPin className="w-3.5 h-3.5" />
+                Get Directions
+              </a>
             </div>
           </div>
         </div>
@@ -630,7 +668,7 @@ export default function App() {
                 </p>
                 <p className="flex items-start gap-2">
                   <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
-                  NH 17, Chikani, Maharashtra 402106
+                  NH 17, Nagothane, Chikani, Maharashtra 402106
                 </p>
               </div>
             </div>
