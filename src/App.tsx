@@ -462,8 +462,8 @@ export default function App() {
             </div>
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=900"
-                alt="Hotel lobby"
+                src="/hotel-gulmohar-night.png"
+                alt="Hotel Gulmohar illuminated facade at night"
                 className="w-full h-96 md:h-[520px] object-cover shadow-xl"
               />
               <div className="absolute -bottom-6 -left-6 w-40 h-40 border-4 border-amber-400 hidden md:block" />
