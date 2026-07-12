@@ -90,6 +90,56 @@ const AMENITIES = [
   { icon: Coffee, label: 'In-Room Dining' },
 ];
 
+function CountUp({ value }: { value: string }) {
+  // Split the raw value into its numeric part and any prefix/suffix (e.g. "95+", "4.9").
+  const match = value.match(/^(\D*)([\d.]+)(\D*)$/);
+  const prefix = match ? match[1] : '';
+  const target = match ? parseFloat(match[2]) : 0;
+  const suffix = match ? match[3] : '';
+  const decimals = match && match[2].includes('.') ? match[2].split('.')[1].length : 0;
+
+  const [display, setDisplay] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const hasRun = useRef(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0].isIntersecting || hasRun.current) return;
+        hasRun.current = true;
+
+        const duration = 1600;
+        const start = performance.now();
+
+        const tick = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          // easeOutCubic for a smooth deceleration
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setDisplay(target * eased);
+          if (progress < 1) requestAnimationFrame(tick);
+          else setDisplay(target);
+        };
+        requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [target]);
+
+  return (
+    <div ref={ref} className="font-serif text-3xl text-stone-900 mb-1 tabular-nums">
+      {prefix}
+      {display.toFixed(decimals)}
+      {suffix}
+    </div>
+  );
+}
+
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
@@ -241,10 +291,10 @@ export default function App() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => scrollTo('about')}
-              className="px-8 py-4 bg-amber-400 text-stone-900 text-sm font-bold tracking-widest uppercase hover:bg-amber-300 transition-colors duration-200 flex items-center justify-center gap-2"
+              className="group px-8 py-4 bg-amber-400 text-stone-900 text-sm font-bold tracking-widest uppercase hover:bg-amber-300 transition-colors duration-200 flex items-center justify-center gap-2"
             >
               Discover More
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
             </button>
             <button
               onClick={() => scrollTo('contact')}
@@ -450,9 +500,7 @@ export default function App() {
                   { value: '4.9', label: 'Guest Rating' },
                 ].map(({ value, label }) => (
                   <div key={label} className="text-center">
-                    <div className="font-serif text-3xl text-stone-900 mb-1">
-                      {value}
-                    </div>
+                    <CountUp value={value} />
                     <div className="text-xs text-stone-400 tracking-wide uppercase">
                       {label}
                     </div>
