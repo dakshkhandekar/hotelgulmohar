@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import 'leaflet/dist/leaflet.css';
+import LeafletMap from './LeafletMap';
 import {
   Phone,
   Mail,
@@ -535,46 +537,13 @@ export default function App() {
               </p>
             </div>
             <div className="relative shadow-lg border border-stone-100 overflow-hidden group">
-              <div className="w-full h-[400px] relative overflow-hidden bg-gradient-to-br from-stone-200 via-stone-100 to-amber-50">
-                <svg
-                  className="absolute inset-0 w-full h-full opacity-40"
-                  viewBox="0 0 800 400"
-                  preserveAspectRatio="xMidYMid slice"
-                  aria-hidden="true"
-                >
-                  <path d="M0 220 Q 150 180 280 200 T 520 190 T 800 210" fill="none" stroke="#a8a29e" strokeWidth="10" strokeLinecap="round" />
-                  <path d="M0 260 Q 160 240 300 255 T 540 245 T 800 260" fill="none" stroke="#d6d3d1" strokeWidth="6" strokeLinecap="round" />
-                  <path d="M120 0 L 140 400" stroke="#d6d3d1" strokeWidth="4" strokeDasharray="12 12" />
-                  <path d="M420 0 L 460 400" stroke="#d6d3d1" strokeWidth="4" strokeDasharray="12 12" />
-                  <path d="M640 0 L 620 400" stroke="#d6d3d1" strokeWidth="4" strokeDasharray="12 12" />
-                  <circle cx="400" cy="200" r="90" fill="#fef3c7" opacity="0.6" />
-                </svg>
-                <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-                  <div className="bg-white/95 backdrop-blur px-8 py-7 shadow-xl text-center max-w-md border border-stone-100">
-                    <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-amber-50 flex items-center justify-center ring-4 ring-amber-50/50">
-                      <MapPin className="w-6 h-6 text-amber-600" />
-                    </div>
-                    <p className="text-xs tracking-[0.25em] uppercase font-semibold text-stone-400 mb-2">
-                      Hotel Gulmohar
-                    </p>
-                    <p className="font-serif text-lg text-stone-900 leading-snug mb-4">
-                      NH 17, Chikani,<br />Maharashtra 402106
-                    </p>
-                    <p className="text-xs text-stone-500 font-mono mb-5">
-                      18.530805° N, 73.144267° E
-                    </p>
-                    <a
-                      href="https://www.google.com/maps/place/Hotel+Gulmohar/@18.5309313,73.1447904,17z/data=!4m14!1m7!3m6!1s0x3be813999880ea2b:0x59b2fca4d43de5!2sHotel+Gulmohar!8m2!3d18.530805!4d73.144267!16s%2Fg%2F1tgdgg8p!3m5!1s0x3be813999880ea2b:0x59b2fca4d43de5!8m2!3d18.530805!4d73.144267!16s%2Fg%2F1tgdgg8p?entry=ttu"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-semibold tracking-wide uppercase px-5 py-3 hover:bg-amber-400 hover:text-stone-900 transition-colors duration-200 shadow-md"
-                    >
-                      <MapPin className="w-3.5 h-3.5" />
-                      Open in Google Maps
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <LeafletMap
+                lat={18.530805}
+                lng={73.144267}
+                zoom={16}
+                popupText="<strong>Hotel Gulmohar</strong><br>NH 17, Chikani, Maharashtra 402106"
+                googleMapsUrl="https://www.google.com/maps/place/Hotel+Gulmohar/@18.5309313,73.1447904,17z/data=!4m14!1m7!3m6!1s0x3be813999880ea2b:0x59b2fca4d43de5!2sHotel+Gulmohar!8m2!3d18.530805!4d73.144267!16s%2Fg%2F1tgdgg8p!3m5!1s0x3be813999880ea2b:0x59b2fca4d43de5!8m2!3d18.530805!4d73.144267!16s%2Fg%2F1tgdgg8p?entry=ttu"
+              />
             </div>
           </div>
         </div>
