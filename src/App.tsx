@@ -608,7 +608,7 @@ export default function App() {
                 </p>
                 <p className="flex items-start gap-2">
                   <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
-                  4A, Patansai, Mumbai-Goa Road, Chikani Patansai, Raigad, Maharashtra, 402106
+                  NH 17, Chikani, Maharashtra 402106
                 </p>
               </div>
             </div>
