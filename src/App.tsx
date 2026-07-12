@@ -181,11 +181,11 @@ export default function App() {
           </a>
           <span className="hidden sm:block text-stone-700 text-xs">|</span>
           <a
-            href="mailto:info@hotelgulmohar.com"
+            href="mailto:booking@hotelgulmohar.com"
             className="flex items-center gap-1.5 text-stone-900 text-xs font-semibold tracking-wide hover:text-stone-700 transition-colors"
           >
             <Mail className="w-3.5 h-3.5" />
-            info@hotelgulmohar.com
+            booking@hotelgulmohar.com
           </a>
         </div>
 
@@ -512,7 +512,7 @@ export default function App() {
               </div>
             </a>
             <a
-              href="mailto:info@hotelgulmohar.com"
+              href="mailto:booking@hotelgulmohar.com"
               className="group flex flex-col items-center text-center gap-5 p-10 border border-stone-100 hover:border-amber-300 shadow-sm hover:shadow-lg transition-all duration-300"
             >
               <div className="w-16 h-16 rounded-full bg-amber-50 border-2 border-amber-200 flex items-center justify-center group-hover:bg-amber-400 group-hover:border-amber-400 transition-all duration-300">
@@ -520,7 +520,7 @@ export default function App() {
               </div>
               <div>
                 <p className="text-xs text-stone-400 tracking-widest uppercase mb-2">Email Us</p>
-                <p className="font-serif text-xl text-stone-900 mb-1">info@hotelgulmohar.com</p>
+                <p className="font-serif text-xl text-stone-900 mb-1">booking@hotelgulmohar.com</p>
                 <p className="text-stone-400 text-xs">We reply within a few hours</p>
               </div>
             </a>
@@ -574,7 +574,7 @@ export default function App() {
                 </p>
                 <p className="flex items-center gap-2">
                   <Mail className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                  info@hotelgulmohar.com
+                  booking@hotelgulmohar.com
                 </p>
                 <p className="flex items-start gap-2">
                   <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
