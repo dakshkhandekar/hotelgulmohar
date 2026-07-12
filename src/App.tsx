@@ -13,7 +13,7 @@ import {
   Wifi,
   Car,
   Coffee,
-  Waves,
+  Baby,
   ArrowRight,
   Clock,
 } from 'lucide-react';
@@ -85,7 +85,7 @@ const DINING = [
 
 const AMENITIES = [
   { icon: Wifi, label: 'High-Speed Wi-Fi' },
-  { icon: Waves, label: 'Infinity Pool' },
+  { icon: Baby, label: 'Kids Zone' },
   { icon: Car, label: 'Valet Parking' },
   { icon: Coffee, label: 'In-Room Dining' },
 ];
