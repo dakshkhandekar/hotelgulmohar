@@ -484,7 +484,7 @@ export default function App() {
               </h2>
               <div className="w-16 h-0.5 bg-amber-400 mb-8" />
               <p className="text-stone-500 leading-relaxed mb-5">
-                Founded in 1928, Hotel Gulmohar has stood as a symbol of
+                Hotel Gulmohar has stood as a symbol of
                 elegance and warmth for nearly a century. Our founders believed
                 that true luxury is not merely about opulence — it is about
                 feeling genuinely welcome, cared for, and at home.
