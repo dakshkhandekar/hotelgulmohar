@@ -515,14 +515,6 @@ export default function App() {
                 alt="Hotel Gulmohar illuminated facade at night"
                 className="w-full h-96 md:h-[520px] object-cover shadow-xl"
               />
-              <div className="absolute -bottom-6 -left-6 w-40 h-40 border-4 border-amber-400 hidden md:block hidden" />
-              <div className="absolute -top-6 -right-6 bg-stone-900 text-white p-6 shadow-xl hidden md:block hidden">
-                <Star className="w-5 h-5 text-amber-400 fill-amber-400 mb-2" />
-                <div className="font-serif text-2xl mb-1">5 Star</div>
-                <div className="text-xs text-stone-400 tracking-wide uppercase">
-                  Luxury Hotel
-                </div>
-              </div>
             </div>
           </div>
         </div>
