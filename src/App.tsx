@@ -580,7 +580,7 @@ export default function App() {
             <div className="relative shadow-lg border border-stone-100 overflow-hidden">
               <iframe
                 title="Hotel Gulmohar location on Google Maps"
-                src="https://www.google.com/maps/search/Hotel+Gulmohar+Nagothane/@18.530805,73.144267,20z?entry=ttu&output=embed"
+                src="https://maps.google.com/maps?q=18.530805,73.144267&z=20&hl=en&output=embed"
                 className="w-full h-[400px] block border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
