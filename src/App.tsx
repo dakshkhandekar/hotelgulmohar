@@ -33,7 +33,7 @@ const ROOMS = [
     guests: '2 Guests',
     price: '$180',
     desc: 'Elegantly appointed with premium amenities, a comfortable king bed, and warm wooden furnishings for a luxurious stay.',
-    image: '/images/deluxe-room.jpg',
+    image: '/image copy copy copy.png',
   },
   {
     name: 'Suite',
