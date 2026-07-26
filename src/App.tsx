@@ -500,8 +500,8 @@ export default function App() {
             </div>
             <div className="relative">
               <img
-                src="/hotel-gulmohar-facade.png"
-                alt="Hotel Gulmohar illuminated facade at night"
+                src="/image copy copy copy copy.png"
+                alt="Hotel Gulmohar reception lobby"
                 className="w-full h-96 md:h-[520px] object-cover shadow-xl"
               />
             </div>
