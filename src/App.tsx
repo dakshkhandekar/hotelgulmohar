@@ -437,8 +437,8 @@ export default function App() {
         className="relative py-28 px-6 flex items-center justify-center overflow-hidden"
       >
         <img
-          src="/hotel-gulmohar-day.png"
-          alt="Hotel Gulmohar building exterior in daylight"
+          src="/image copy copy copy copy copy.png"
+          alt="Hotel Gulmohar building exterior"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-stone-900/70" />
