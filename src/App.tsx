@@ -32,27 +32,16 @@ const ROOMS = [
     size: '42 sqm',
     guests: '2 Guests',
     price: '$180',
-    desc: 'Elegantly appointed with city views, a king bed, and premium amenities for a luxurious stay.',
-    image:
-      'https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=800',
+    desc: 'Elegantly appointed with premium amenities, a comfortable king bed, and warm wooden furnishings for a luxurious stay.',
+    image: '/images/deluxe-room.jpg',
   },
   {
     name: 'Suite',
     size: '68 sqm',
     guests: '2-3 Guests',
     price: '$340',
-    desc: 'Spacious living area with a private balcony overlooking the garden and ocean horizon.',
-    image:
-      'https://images.pexels.com/photos/1579253/pexels-photo-1579253.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
-    name: 'Presidential Suite',
-    size: '120 sqm',
-    guests: '4 Guests',
-    price: '$680',
-    desc: 'The pinnacle of luxury. Two bedrooms, a private terrace, butler service, and panoramic views.',
-    image:
-      'https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800',
+    desc: 'Spacious suite with a separate living area, elegant decor, and premium furnishings for the ultimate comfort.',
+    image: '/images/suite-room.jpg',
   },
 ];
 
