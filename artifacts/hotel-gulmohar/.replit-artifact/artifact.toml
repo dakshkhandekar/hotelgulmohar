@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Hotel Gulmohar"
+version = "1.0.0"
+id = "artifacts/hotel-gulmohar"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18451
+
+[services.development]
+run = "pnpm --filter @workspace/hotel-gulmohar run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/hotel-gulmohar", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/hotel-gulmohar/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18451"
+BASE_PATH = "/"
