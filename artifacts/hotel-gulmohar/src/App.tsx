@@ -328,7 +328,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {ROOMS.map((room) => (
               <div
                 key={room.name}
@@ -383,7 +383,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {DINING.map((venue) => (
               <div
                 key={venue.name}
