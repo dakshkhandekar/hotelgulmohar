@@ -243,7 +243,6 @@ export default function App() {
           </div>
         )}
       </header>
-
       {/* ── Hero Section ── */}
       <section
         id="home"
@@ -295,7 +294,6 @@ export default function App() {
           <ChevronDown className="w-8 h-8" />
         </button>
       </section>
-
       {/* ── Amenities Strip ── */}
       <div className="bg-stone-900 py-6 px-6">
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -309,7 +307,6 @@ export default function App() {
           ))}
         </div>
       </div>
-
       {/* ── Accommodation Section ── */}
       <section
         id="accommodation"
@@ -365,7 +362,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
       {/* ── Dining Section ── */}
       <section
         id="dining"
@@ -423,7 +419,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
       {/* ── Quote / Divider ── */}
       <div
         className="relative py-28 px-6 flex items-center justify-center overflow-hidden"
@@ -445,7 +440,6 @@ export default function App() {
           </p>
         </div>
       </div>
-
       {/* ── About Section ── */}
       <section
         id="about"
@@ -470,11 +464,7 @@ export default function App() {
                 that true luxury is not merely about opulence — it is about
                 feeling genuinely welcome, cared for, and at home.
               </p>
-              <p className="text-stone-500 leading-relaxed mb-8">
-                Today, we carry forward that same ethos with a team of over 200
-                dedicated hospitality professionals, world-class facilities, and
-                an unwavering commitment to creating moments that matter.
-              </p>
+              <p className="text-stone-500 leading-relaxed mb-8">Today, we carry forward that same ethos with a team of over 100 dedicated hospitality professionals, world-class facilities, and an unwavering commitment to creating moments that matter.</p>
               <div className="grid grid-cols-3 gap-6">
                 {[
                   { value: '50+', label: 'Years of Service' },
@@ -500,7 +490,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
       {/* ── Contact Section ── */}
       <section
         id="contact"
@@ -590,7 +579,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
       {/* ── Footer ── */}
       <footer className="bg-stone-900 text-stone-400 py-12 px-6">
         <div className="max-w-6xl mx-auto">
