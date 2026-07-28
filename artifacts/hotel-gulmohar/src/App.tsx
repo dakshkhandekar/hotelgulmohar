@@ -579,6 +579,67 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* ── Nearby Attractions ── */}
+      <section className="py-16 px-6 bg-stone-50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-amber-600 text-xs tracking-[0.4em] uppercase font-semibold mb-3">
+              Explore Around
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl text-stone-900 mb-4">
+              Nearby Attractions
+            </h2>
+            <div className="w-16 h-0.5 bg-amber-400 mx-auto mb-5" />
+            <p className="text-stone-500 max-w-lg mx-auto text-sm leading-relaxed">
+              Step beyond the hotel and discover the rich heritage, nature, and
+              coastal beauty just a short drive away.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                name: 'Ballaleshwar Pali Temple',
+                image: '/attraction-temple.png',
+                desc: 'One of the eight sacred Ashtavinayak temples, a revered Ganesha shrine just 15 km away.',
+              },
+              {
+                name: 'Avchitgad Fort',
+                image: '/attraction-fort.png',
+                desc: 'A scenic hilltop fort offering breathtaking panoramic views of the Sahyadri ranges.',
+              },
+              {
+                name: 'Nagaon Beach',
+                image: '/attraction-beach.png',
+                desc: 'A serene golden beach on the Konkan coast, perfect for sunsets and peaceful evening walks.',
+              },
+            ].map((place) => (
+              <div
+                key={place.name}
+                className="bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100"
+              >
+                <div className="h-40 overflow-hidden">
+                  <img
+                    src={place.image}
+                    alt={place.name}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-serif text-base text-stone-900 mb-1">
+                    {place.name}
+                  </h3>
+                  <p className="text-stone-500 text-xs leading-relaxed">
+                    {place.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Footer ── */}
       <footer className="bg-stone-900 text-stone-400 py-12 px-6">
         <div className="max-w-6xl mx-auto">
