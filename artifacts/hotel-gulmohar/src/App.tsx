@@ -435,12 +435,12 @@ export default function App() {
         />
         <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-stone-900/90 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 z-10 text-center pb-10 px-6">
-          <p className="text-amber-400 text-3xl font-serif leading-none mb-3">"</p>
-          <p className="text-white font-serif text-xl md:text-2xl leading-relaxed italic" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+          <p className="text-amber-400 text-xl font-serif leading-none mb-2">"</p>
+          <p className="text-white font-serif text-sm md:text-base leading-relaxed italic" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
             Every visit is a story worth telling. We exist to make yours
             unforgettable.
           </p>
-          <p className="text-amber-400 text-sm tracking-widest uppercase mt-4 font-semibold" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
+          <p className="text-amber-400 text-xs tracking-widest uppercase mt-3 font-semibold" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
             — The Gulmohar Team
           </p>
         </div>
