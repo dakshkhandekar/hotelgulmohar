@@ -433,8 +433,8 @@ export default function App() {
           alt="Hotel Gulmohar building exterior"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-stone-900/70" />
-        <div className="relative z-10 text-center max-w-2xl">
+        <div className="absolute inset-0 bg-stone-900/40" />
+        <div className="relative z-10 text-center max-w-2xl" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.8)' }}>
           <p className="text-amber-400 text-4xl font-serif leading-none mb-4">"</p>
           <p className="text-white font-serif text-2xl md:text-3xl leading-relaxed italic">
             Every visit is a story worth telling. We exist to make yours
