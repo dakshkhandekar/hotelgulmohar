@@ -602,7 +602,7 @@ export default function App() {
               {
                 name: 'Ballaleshwar Pali Temple',
                 image: '/attraction-temple.png',
-                desc: 'One of the eight sacred Ashtavinayak temples, a revered Ganesha shrine just 15 km away.',
+                desc: 'One of the eight sacred Ashtavinayak temples, a revered Ganesha shrine just 20 km away.',
               },
               {
                 name: 'Avchitgad Fort',
