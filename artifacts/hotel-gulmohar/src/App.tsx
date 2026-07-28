@@ -62,14 +62,6 @@ const DINING = [
     image:
       'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
-  {
-    name: 'The Poolside Café',
-    type: 'Casual Dining',
-    hours: '8:00 AM – 6:00 PM',
-    desc: 'Light refreshments, tropical drinks, and fresh salads served in a breezy poolside setting.',
-    image:
-      'https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
 ];
 
 const AMENITIES = [
