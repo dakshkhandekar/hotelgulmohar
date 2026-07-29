@@ -617,6 +617,12 @@ export default function App() {
                 desc: 'A serene golden beach on the Konkan coast, perfect for sunsets and peaceful evening walks.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
+              {
+                name: 'Birla Mandir',
+                image: '/attraction-birla.png',
+                desc: 'A stunning white marble temple dedicated to Lord Vishnu, offering a serene spiritual experience.',
+                imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
+              },
             ].map((place) => (
               <div
                 key={place.name}
