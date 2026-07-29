@@ -603,27 +603,30 @@ export default function App() {
                 name: 'Ballaleshwar Pali Temple',
                 image: '/attraction-temple.png',
                 desc: 'One of the eight sacred Ashtavinayak temples, a revered Ganesha shrine just 20 km away.',
+                imgClass: 'w-full h-full object-cover object-bottom hover:scale-105 transition-transform duration-500',
               },
               {
-                name: 'Avchitgad Fort',
+                name: 'Sudhagad Fort',
                 image: '/attraction-fort.png',
-                desc: 'A scenic hilltop fort offering breathtaking panoramic views of the Sahyadri ranges.',
+                desc: 'A majestic hilltop fort surrounded by lush Sahyadri greenery, perfect for trekking enthusiasts.',
+                imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
               {
-                name: 'Nagaon Beach',
+                name: 'Kashid Beach',
                 image: '/attraction-beach.png',
                 desc: 'A serene golden beach on the Konkan coast, perfect for sunsets and peaceful evening walks.',
+                imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
             ].map((place) => (
               <div
                 key={place.name}
                 className="bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100"
               >
-                <div className="h-40 overflow-hidden">
+                <div className="h-44 overflow-hidden">
                   <img
                     src={place.image}
                     alt={place.name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className={place.imgClass}
                   />
                 </div>
                 <div className="p-4">
