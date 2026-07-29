@@ -602,24 +602,28 @@ export default function App() {
               {
                 name: 'Ballaleshwar Pali Temple',
                 image: '/attraction-temple.png',
-                desc: 'One of the eight sacred Ashtavinayak temples, a revered Ganesha shrine just 20 km away.',
+                distance: '20 km',
+                desc: 'One of the eight sacred Ashtavinayak temples, a revered Ganesha shrine.',
                 imgClass: 'w-full h-full object-cover object-bottom hover:scale-105 transition-transform duration-500',
               },
               {
                 name: 'Sudhagad Fort',
                 image: '/attraction-fort.png',
+                distance: '25 km',
                 desc: 'A majestic hilltop fort surrounded by lush Sahyadri greenery, perfect for trekking enthusiasts.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
               {
                 name: 'Kashid Beach',
                 image: '/attraction-beach.png',
+                distance: '45 km',
                 desc: 'A serene golden beach on the Konkan coast, perfect for sunsets and peaceful evening walks.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
               {
                 name: 'Birla Mandir',
                 image: '/attraction-birla.png',
+                distance: '30 km',
                 desc: 'A stunning white marble temple dedicated to Lord Vishnu, offering a serene spiritual experience.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
@@ -636,9 +640,14 @@ export default function App() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-serif text-base text-stone-900 mb-1">
-                    {place.name}
-                  </h3>
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="font-serif text-base text-stone-900">
+                      {place.name}
+                    </h3>
+                    <span className="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full shrink-0 ml-2">
+                      {place.distance}
+                    </span>
+                  </div>
                   <p className="text-stone-500 text-xs leading-relaxed">
                     {place.desc}
                   </p>
