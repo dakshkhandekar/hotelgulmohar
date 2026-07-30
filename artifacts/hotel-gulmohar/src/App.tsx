@@ -421,15 +421,14 @@ export default function App() {
       </section>
       {/* ── Quote / Divider ── */}
       <div
-        className="relative px-6 flex items-center justify-center overflow-hidden bg-stone-900"
-        style={{ minHeight: '420px' }}
+        className="relative py-28 px-6 flex items-center justify-center overflow-hidden"
       >
         <img
           src="/hotel-gulmohar-front.png"
           alt="Hotel Gulmohar building exterior"
-          className="absolute inset-0 w-full h-full object-contain brightness-50"
+          className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-stone-900/80 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-2/5 bg-gradient-to-b from-stone-900/90 to-transparent" />
         <div className="absolute inset-x-0 top-0 z-10 text-center pt-10 px-6">
           <p className="text-amber-400 text-xl font-serif leading-none mb-2">"</p>
           <p className="text-white font-serif text-sm md:text-base leading-relaxed italic" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
@@ -603,28 +602,24 @@ export default function App() {
               {
                 name: 'Ballaleshwar Pali Temple',
                 image: '/attraction-temple.png',
-                distance: '20 km',
-                desc: 'One of the eight sacred Ashtavinayak temples, a revered Ganesha shrine.',
+                desc: 'One of the eight sacred Ashtavinayak temples, a revered Ganesha shrine just 20 km away.',
                 imgClass: 'w-full h-full object-cover object-bottom hover:scale-105 transition-transform duration-500',
               },
               {
                 name: 'Sudhagad Fort',
                 image: '/attraction-fort.png',
-                distance: '25 km',
                 desc: 'A majestic hilltop fort surrounded by lush Sahyadri greenery, perfect for trekking enthusiasts.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
               {
                 name: 'Kashid Beach',
                 image: '/attraction-beach.png',
-                distance: '45 km',
                 desc: 'A serene golden beach on the Konkan coast, perfect for sunsets and peaceful evening walks.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
               {
                 name: 'Birla Mandir',
                 image: '/attraction-birla.png',
-                distance: '30 km',
                 desc: 'A stunning white marble temple dedicated to Lord Vishnu, offering a serene spiritual experience.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
@@ -641,14 +636,9 @@ export default function App() {
                   />
                 </div>
                 <div className="p-4">
-                  <div className="flex items-center justify-between mb-1">
-                    <h3 className="font-serif text-base text-stone-900">
-                      {place.name}
-                    </h3>
-                    <span className="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full shrink-0 ml-2">
-                      {place.distance}
-                    </span>
-                  </div>
+                  <h3 className="font-serif text-base text-stone-900 mb-1">
+                    {place.name}
+                  </h3>
                   <p className="text-stone-500 text-xs leading-relaxed">
                     {place.desc}
                   </p>
