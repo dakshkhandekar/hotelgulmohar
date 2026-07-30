@@ -582,7 +582,7 @@ export default function App() {
 
       {/* ── Nearby Attractions ── */}
       <section className="py-16 px-6 bg-stone-50">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
             <p className="text-amber-600 text-xs tracking-[0.4em] uppercase font-semibold mb-3">
               Explore Around
@@ -621,6 +621,18 @@ export default function App() {
                 name: 'Birla Mandir',
                 image: '/attraction-birla.png',
                 desc: 'A stunning white marble temple dedicated to Lord Vishnu, offering a serene spiritual experience.',
+                imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
+              },
+              {
+                name: 'Murud Beach',
+                image: '/attraction-murud-beach.png',
+                desc: 'A pristine and lesser-explored beach on the Konkan coast, 65 km away — known for its calm waters, coconut palms, and stunning shoreline.',
+                imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
+              },
+              {
+                name: 'Raigad Fort',
+                image: '/attraction-raigad-fort.png',
+                desc: 'The legendary capital of Chhatrapati Shivaji Maharaj's empire, 60 km away — a must-visit hilltop fort steeped in Maratha history.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
             ].map((place) => (
