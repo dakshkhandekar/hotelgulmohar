@@ -47,12 +47,11 @@ const ROOMS = [
 
 const DINING = [
   {
-    name: 'The Grand Terrace',
+    name: 'The Grand Banquet Hall',
     type: 'Fine Dining',
     hours: '7:00 AM – 11:00 PM',
     desc: 'An award-winning restaurant offering contemporary cuisine with locally sourced ingredients and breathtaking views.',
-    image:
-      'https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/dining-banquet-hall.png',
   },
   {
     name: 'Ember & Oak Bar',
