@@ -395,10 +395,8 @@ export default function App() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <span className="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 tracking-wide border border-white/30">
-                      {venue.type}
-                    </span>
+                  <div className="absolute bottom-4 left-4 text-amber-400 text-2xl drop-shadow-lg">
+                    ★
                   </div>
                 </div>
                 <div className="p-6">
