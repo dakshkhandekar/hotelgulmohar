@@ -423,7 +423,7 @@ export default function App() {
         <img
           src="/hotel-gulmohar-front.png"
           alt="Hotel Gulmohar building exterior"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-bottom"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/80 via-stone-900/40 to-stone-900/80" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
