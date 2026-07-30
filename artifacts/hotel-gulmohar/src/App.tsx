@@ -49,14 +49,14 @@ const DINING = [
   {
     name: 'The Grand Banquet Hall',
     type: 'Fine Dining',
-    hours: '7:00 AM – 11:00 PM',
+    hours: '',
     desc: 'An award-winning restaurant offering contemporary cuisine with locally sourced ingredients and breathtaking views.',
     image: '/dining-banquet-hall.png',
   },
   {
-    name: 'Ember & Oak Bar',
+    name: 'Perfectly Seasoned',
     type: 'Lounge & Bar',
-    hours: '4:00 PM – 1:00 AM',
+    hours: '',
     desc: 'A sophisticated bar featuring handcrafted cocktails, rare whiskeys, and live jazz on Friday evenings.',
     image:
       'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -405,10 +405,12 @@ export default function App() {
                   <h3 className="font-serif text-xl text-stone-900 mb-1">
                     {venue.name}
                   </h3>
-                  <div className="flex items-center gap-1.5 text-xs text-stone-400 mb-3">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>{venue.hours}</span>
-                  </div>
+                  {venue.hours && (
+                    <div className="flex items-center gap-1.5 text-xs text-stone-400 mb-3">
+                      <Clock className="w-3.5 h-3.5" />
+                      <span>{venue.hours}</span>
+                    </div>
+                  )}
                   <p className="text-stone-500 text-sm leading-relaxed">
                     {venue.desc}
                   </p>
