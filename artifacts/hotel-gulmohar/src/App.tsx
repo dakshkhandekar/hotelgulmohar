@@ -632,7 +632,7 @@ export default function App() {
               {
                 name: 'Raigad Fort',
                 image: '/attraction-raigad-fort.png',
-                desc: 'The legendary capital of Chhatrapati Shivaji Maharaj's empire, 60 km away — a must-visit hilltop fort steeped in Maratha history.',
+                desc: 'The legendary capital of Chhatrapati Shivaji Maharaj\'s empire, 60 km away — a must-visit hilltop fort steeped in Maratha history.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
             ].map((place) => (
