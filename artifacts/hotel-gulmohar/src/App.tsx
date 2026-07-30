@@ -421,18 +421,18 @@ export default function App() {
       {/* ── Quote / Divider ── */}
       <div className="relative h-[60vh] min-h-[400px] w-full overflow-hidden">
         <img
-          src="/hotel-gulmohar-front.png"
+          src="/hotel-gulmohar-quote.png"
           alt="Hotel Gulmohar building exterior"
-          className="absolute inset-0 w-full h-full object-cover object-top"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/80 via-stone-900/40 to-stone-900/80" />
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-          <p className="text-amber-400 text-3xl font-serif leading-none mb-3">"</p>
-          <p className="text-white font-serif text-lg md:text-xl leading-relaxed italic max-w-2xl" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9)' }}>
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-900/85 via-stone-900/40 to-transparent" />
+        <div className="relative z-10 h-full flex flex-col items-start justify-center px-10 md:px-20 max-w-xl">
+          <p className="text-amber-400 text-4xl font-serif leading-none mb-3">"</p>
+          <p className="text-white font-serif text-lg md:text-2xl leading-relaxed italic" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.8)' }}>
             Every visit is a story worth telling. We exist to make yours
             unforgettable.
           </p>
-          <p className="text-amber-400 text-xs tracking-widest uppercase mt-4 font-semibold" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9)' }}>
+          <p className="text-amber-400 text-xs tracking-widest uppercase mt-5 font-semibold" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.8)' }}>
             — The Gulmohar Team
           </p>
         </div>
