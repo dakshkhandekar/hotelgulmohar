@@ -53,15 +53,16 @@ const DINING = [
     desc: 'An award-winning restaurant offering contemporary cuisine with locally sourced ingredients and breathtaking views.',
     image: '/dining-banquet-hall.png',
     images: ['/dining-banquet-hall.png', '/banquet-hall-angle2.png', '/banquet-hall-angle3.png'],
+    interval: 3000,
   },
   {
     name: 'Perfectly Seasoned',
     type: 'Lounge & Bar',
     hours: '',
     desc: 'A multi-cuisine restaurant serving freshly prepared dishes with bold flavors and locally sourced ingredients — a feast for every palate.',
-    image:
-      'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800',
-    images: null,
+    image: '/food-1.png',
+    images: ['/food-1.png', '/food-2.png', '/food-3.png', '/food-4.png'],
+    interval: 4000,
   },
 ];
 
@@ -76,14 +77,15 @@ const AMENITIES = [
 function DiningCard({ venue }: { venue: typeof DINING[0] }) {
   const images = venue.images ?? [venue.image];
   const [current, setCurrent] = useState(0);
+  const interval = venue.interval ?? 3000;
 
   useEffect(() => {
     if (images.length <= 1) return;
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, interval);
     return () => clearInterval(timer);
-  }, [images.length]);
+  }, [images.length, interval]);
 
   return (
     <div className="group overflow-hidden border border-stone-100 hover:border-amber-200 transition-colors duration-300 shadow-sm hover:shadow-lg">
