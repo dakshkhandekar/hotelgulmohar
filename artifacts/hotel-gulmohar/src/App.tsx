@@ -672,7 +672,7 @@ export default function App() {
                 </span>
               </div>
               <p className="text-sm leading-relaxed">
-                A timeless landmark of luxury and warmth since 1928. Your home
+                A timeless landmark of luxury and warmth. Your home
                 away from home.
               </p>
             </div>
