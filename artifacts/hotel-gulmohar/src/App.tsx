@@ -53,7 +53,7 @@ const DINING = [
     desc: 'An award-winning restaurant offering contemporary cuisine with locally sourced ingredients and breathtaking views.',
     image: '/dining-banquet-hall.png',
     images: ['/dining-banquet-hall.png', '/banquet-hall-angle2.png', '/banquet-hall-angle3.png'],
-    interval: 6000,
+    interval: 5000,
   },
   {
     name: 'Perfectly Seasoned',
@@ -62,7 +62,7 @@ const DINING = [
     desc: 'A multi-cuisine restaurant serving freshly prepared dishes with bold flavors and locally sourced ingredients — a feast for every palate.',
     image: '/food-1.png',
     images: ['/food-1.png', '/food-2.png', '/food-3.png', '/food-4.png'],
-    interval: 7000,
+    interval: 6000,
   },
 ];
 
