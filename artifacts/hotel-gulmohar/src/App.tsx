@@ -58,7 +58,7 @@ const DINING = [
     name: 'Perfectly Seasoned',
     type: 'Lounge & Bar',
     hours: '',
-    desc: 'A sophisticated bar featuring handcrafted cocktails, rare whiskeys, and live jazz on Friday evenings.',
+    desc: 'A multi-cuisine restaurant serving freshly prepared dishes with bold flavors and locally sourced ingredients — a feast for every palate.',
     image:
       'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800',
     images: null,
