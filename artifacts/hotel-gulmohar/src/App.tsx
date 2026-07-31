@@ -52,6 +52,7 @@ const DINING = [
     hours: '',
     desc: 'An award-winning restaurant offering contemporary cuisine with locally sourced ingredients and breathtaking views.',
     image: '/dining-banquet-hall.png',
+    images: ['/dining-banquet-hall.png', '/banquet-hall-angle2.png', '/banquet-hall-angle3.png'],
   },
   {
     name: 'Perfectly Seasoned',
@@ -60,6 +61,7 @@ const DINING = [
     desc: 'A sophisticated bar featuring handcrafted cocktails, rare whiskeys, and live jazz on Friday evenings.',
     image:
       'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800',
+    images: null,
   },
 ];
 
@@ -69,6 +71,58 @@ const AMENITIES = [
   { icon: Car, label: 'Valet Parking' },
   { icon: Coffee, label: 'In-Room Dining' },
 ];
+
+
+function DiningCard({ venue }: { venue: typeof DINING[0] }) {
+  const images = venue.images ?? [venue.image];
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  return (
+    <div className="group overflow-hidden border border-stone-100 hover:border-amber-200 transition-colors duration-300 shadow-sm hover:shadow-lg">
+      <div className="relative overflow-hidden h-52">
+        {images.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt={venue.name}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${i === current ? 'opacity-100' : 'opacity-0'}`}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent" />
+        <div className="absolute bottom-4 left-4 text-amber-400 text-2xl drop-shadow-lg">★</div>
+        {images.length > 1 && (
+          <div className="absolute bottom-4 right-4 flex gap-1.5">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === current ? 'bg-amber-400 w-3' : 'bg-white/60'}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="p-6">
+        <h3 className="font-serif text-xl text-stone-900 mb-1">{venue.name}</h3>
+        {venue.hours && (
+          <div className="flex items-center gap-1.5 text-xs text-stone-400 mb-3">
+            <Clock className="w-3.5 h-3.5" />
+            <span>{venue.hours}</span>
+          </div>
+        )}
+        <p className="text-stone-500 text-sm leading-relaxed">{venue.desc}</p>
+      </div>
+    </div>
+  );
+}
 
 function CountUp({ value }: { value: string }) {
   // Split the raw value into its numeric part and any prefix/suffix (e.g. "95+", "4.9").
@@ -384,36 +438,7 @@ export default function App() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {DINING.map((venue) => (
-              <div
-                key={venue.name}
-                className="group overflow-hidden border border-stone-100 hover:border-amber-200 transition-colors duration-300 shadow-sm hover:shadow-lg"
-              >
-                <div className="relative overflow-hidden h-52">
-                  <img
-                    src={venue.image}
-                    alt={venue.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 text-amber-400 text-2xl drop-shadow-lg">
-                    ★
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-serif text-xl text-stone-900 mb-1">
-                    {venue.name}
-                  </h3>
-                  {venue.hours && (
-                    <div className="flex items-center gap-1.5 text-xs text-stone-400 mb-3">
-                      <Clock className="w-3.5 h-3.5" />
-                      <span>{venue.hours}</span>
-                    </div>
-                  )}
-                  <p className="text-stone-500 text-sm leading-relaxed">
-                    {venue.desc}
-                  </p>
-                </div>
-              </div>
+              <DiningCard key={venue.name} venue={venue} />
             ))}
           </div>
         </div>
