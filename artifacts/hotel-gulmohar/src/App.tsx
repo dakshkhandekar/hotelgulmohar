@@ -605,19 +605,19 @@ export default function App() {
               {
                 name: 'Sudhagad Fort',
                 image: '/attraction-fort.png',
-                desc: 'A majestic hilltop fort surrounded by lush Sahyadri greenery, perfect for trekking enthusiasts.',
+                desc: 'A majestic hilltop fort surrounded by lush Sahyadri greenery, 15 km away — perfect for trekking enthusiasts.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
               {
                 name: 'Kashid Beach',
                 image: '/attraction-beach.png',
-                desc: 'A serene golden beach on the Konkan coast, perfect for sunsets and peaceful evening walks.',
+                desc: 'A serene golden beach on the Konkan coast, 50 km away — perfect for sunsets and peaceful evening walks.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
               {
                 name: 'Birla Mandir',
                 image: '/attraction-birla.png',
-                desc: 'A stunning white marble temple dedicated to Lord Vishnu, offering a serene spiritual experience.',
+                desc: 'A stunning white marble temple dedicated to Lord Vishnu, 55 km away — offering a serene spiritual experience.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
               {
