@@ -311,7 +311,7 @@ export default function App() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/60 via-stone-900/30 to-stone-900/70" />
 
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-24">
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-24 pb-24">
           <p className="text-amber-400 text-xs tracking-[0.4em] uppercase font-semibold mb-4">
             Welcome to Luxury
           </p>
@@ -341,10 +341,10 @@ export default function App() {
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-0 right-0 z-10 flex justify-center">
+        <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center pointer-events-none">
           <button
             onClick={() => scrollTo('accommodation')}
-            className="flex items-center justify-center text-white/70 hover:text-white transition-colors animate-bounce"
+            className="pointer-events-auto flex items-center justify-center text-white/70 hover:text-white transition-colors animate-bounce"
             aria-label="Scroll down"
           >
             <ChevronDown className="w-8 h-8" />
