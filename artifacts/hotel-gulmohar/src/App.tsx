@@ -341,13 +341,15 @@ export default function App() {
           </div>
         </div>
 
-        <button
-          onClick={() => scrollTo('accommodation')}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/70 hover:text-white transition-colors animate-bounce"
-          aria-label="Scroll down"
-        >
-          <ChevronDown className="w-8 h-8" />
-        </button>
+        <div className="absolute bottom-10 left-0 right-0 z-10 flex justify-center">
+          <button
+            onClick={() => scrollTo('accommodation')}
+            className="flex items-center justify-center text-white/70 hover:text-white transition-colors animate-bounce"
+            aria-label="Scroll down"
+          >
+            <ChevronDown className="w-8 h-8" />
+          </button>
+        </div>
       </section>
       {/* ── Amenities Strip ── */}
       <div className="bg-stone-900 py-6 px-6">
