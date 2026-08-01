@@ -332,12 +332,12 @@ export default function App() {
               Discover More
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
             </button>
-            <button
-              onClick={() => scrollTo('contact')}
-              className="px-8 py-4 border border-white/50 text-white text-sm font-bold tracking-widest uppercase hover:bg-white/10 transition-colors duration-200"
+            <a
+              href="tel:+919157912719"
+              className="px-8 py-4 border border-white/50 text-white text-sm font-bold tracking-widest uppercase hover:bg-white/10 transition-colors duration-200 flex items-center justify-center"
             >
               Contact Us
-            </button>
+            </a>
           </div>
         </div>
 
