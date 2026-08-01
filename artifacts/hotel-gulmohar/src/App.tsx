@@ -84,7 +84,9 @@ function DiningCard({ venue }: { venue: typeof DINING[0] }) {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
     }, interval);
-    return () => clearInterval(timer);
+    return (
+    <>
+    <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />) => clearInterval(timer);
   }, [images.length, interval]);
 
   return (
@@ -180,11 +182,16 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+  const fadeRefs = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 60);
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
       const offsets = NAV_LINKS.map(({ id }) => {
         const el = sectionRefs.current[id];
         if (!el) return { id, top: Infinity };
@@ -195,6 +202,25 @@ export default function App() {
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Fade-in on scroll observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    fadeRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   const scrollTo = (id: string) => {
@@ -367,8 +393,8 @@ export default function App() {
       {/* ── Accommodation Section ── */}
       <section
         id="accommodation"
-        ref={(el) => { sectionRefs.current['accommodation'] = el; }}
-        className="py-24 px-6 bg-stone-50"
+        ref={(el) => { sectionRefs.current['accommodation'] = el; if (el) fadeRefs.current.push(el); }}
+        className="fade-in-section py-24 px-6 bg-stone-50"
       >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -422,8 +448,8 @@ export default function App() {
       {/* ── Dining Section ── */}
       <section
         id="dining"
-        ref={(el) => { sectionRefs.current['dining'] = el; }}
-        className="py-24 px-6 bg-white"
+        ref={(el) => { sectionRefs.current['dining'] = el; if (el) fadeRefs.current.push(el); }}
+        className="fade-in-section py-24 px-6 bg-white"
       >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -469,8 +495,8 @@ export default function App() {
       {/* ── About Section ── */}
       <section
         id="about"
-        ref={(el) => { sectionRefs.current['about'] = el; }}
-        className="py-24 px-6 bg-stone-50"
+        ref={(el) => { sectionRefs.current['about'] = el; if (el) fadeRefs.current.push(el); }}
+        className="fade-in-section py-24 px-6 bg-stone-50"
       >
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -519,8 +545,8 @@ export default function App() {
       {/* ── Contact Section ── */}
       <section
         id="contact"
-        ref={(el) => { sectionRefs.current['contact'] = el; }}
-        className="py-24 px-6 bg-white"
+        ref={(el) => { sectionRefs.current['contact'] = el; if (el) fadeRefs.current.push(el); }}
+        className="fade-in-section py-24 px-6 bg-white"
       >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -607,7 +633,7 @@ export default function App() {
       </section>
 
       {/* ── Nearby Attractions ── */}
-      <section className="py-16 px-6 bg-stone-50">
+      <section ref={(el) => { if (el) fadeRefs.current.push(el); }} className="fade-in-section py-16 px-6 bg-stone-50">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
             <p className="text-amber-600 text-xs tracking-[0.4em] uppercase font-semibold mb-3">
@@ -749,5 +775,6 @@ export default function App() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
