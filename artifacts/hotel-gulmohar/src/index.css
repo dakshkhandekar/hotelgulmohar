@@ -12,13 +12,3 @@
   opacity: 1;
   transform: translateY(0);
 }
-/* Scroll progress bar */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: #f59e0b;
-  z-index: 100;
-  transition: width 0.1s ease-out;
-}

@@ -85,7 +85,6 @@ function DiningCard({ venue }: { venue: typeof DINING[0] }) {
       setCurrent((prev) => (prev + 1) % images.length);
     }, interval);
     return (
-    <>
     <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />) => clearInterval(timer);
   }, [images.length, interval]);
 
@@ -182,16 +181,12 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
   const fadeRefs = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 60);
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
       const offsets = NAV_LINKS.map(({ id }) => {
         const el = sectionRefs.current[id];
         if (!el) return { id, top: Infinity };
@@ -775,6 +770,5 @@ export default function App() {
         </div>
       </footer>
     </div>
-    </>
   );
 }
