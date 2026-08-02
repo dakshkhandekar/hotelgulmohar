@@ -84,8 +84,7 @@ function DiningCard({ venue }: { venue: typeof DINING[0] }) {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
     }, interval);
-    return (
-    <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />) => clearInterval(timer);
+    return () => clearInterval(timer);
   }, [images.length, interval]);
 
   return (
