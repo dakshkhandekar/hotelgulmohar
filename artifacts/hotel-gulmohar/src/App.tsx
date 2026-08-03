@@ -180,12 +180,15 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
   const fadeRefs = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 60);
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0);
       const offsets = NAV_LINKS.map(({ id }) => {
         const el = sectionRefs.current[id];
         if (!el) return { id, top: Infinity };
@@ -224,6 +227,13 @@ export default function App() {
 
   return (
     <div className="font-sans text-stone-800 bg-white">
+      {/* ── Scroll Progress Bar ── */}
+      <div className="fixed top-0 left-0 right-0 z-[60] h-1 bg-transparent">
+        <div
+          className="h-full bg-amber-400 transition-[width] duration-100 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
       {/* ── Fixed Navbar ── */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
