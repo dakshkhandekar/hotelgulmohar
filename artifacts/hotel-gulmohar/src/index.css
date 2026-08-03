@@ -12,4 +12,23 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Hero text stagger animation */
+  .hero-stagger {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroFadeUp 0.8s ease-out forwards;
+  }
+  .hero-stagger-1 { animation-delay: 0.2s; }
+  .hero-stagger-2 { animation-delay: 0.5s; }
+  .hero-stagger-3 { animation-delay: 0.8s; }
+  .hero-stagger-4 { animation-delay: 1.1s; }
+  .hero-stagger-5 { animation-delay: 1.4s; }
+
+  @keyframes heroFadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

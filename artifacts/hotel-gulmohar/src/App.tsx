@@ -95,7 +95,7 @@ function DiningCard({ venue }: { venue: typeof DINING[0] }) {
             key={src}
             src={src}
             alt={venue.name}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${i === current ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${i === current ? 'opacity-100' : 'opacity-0'}`}
           />
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent" />
@@ -332,19 +332,19 @@ export default function App() {
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/60 via-stone-900/30 to-stone-900/70" />
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-24 pb-24">
-          <p className="text-amber-400 text-xs tracking-[0.4em] uppercase font-semibold mb-4">
+          <p className="hero-stagger hero-stagger-1 text-amber-400 text-xs tracking-[0.4em] uppercase font-semibold mb-4">
             Welcome to Luxury
           </p>
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-tight mb-6">
+          <h1 className="hero-stagger hero-stagger-2 font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-tight mb-6">
             Hotel
             <br />
             <span className="text-amber-400">Gulmohar</span>
           </h1>
-          <p className="text-stone-200 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+          <p className="hero-stagger hero-stagger-3 text-stone-200 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
             Where timeless elegance meets modern comfort. Experience the art of
             exceptional hospitality in the heart of the city.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="hero-stagger hero-stagger-4 flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="mailto:booking@hotelgulmohar.com"
               className="group px-8 py-4 bg-amber-400 text-stone-900 text-sm font-bold tracking-widest uppercase hover:bg-amber-300 transition-colors duration-200 flex items-center justify-center gap-2"
@@ -468,11 +468,11 @@ export default function App() {
         </div>
       </section>
       {/* ── Quote / Divider ── */}
-      <div className="relative h-[60vh] min-h-[400px] w-full overflow-hidden">
+      <div className="group relative h-[60vh] min-h-[400px] w-full overflow-hidden">
         <img
           src="/hotel-gulmohar-quote.png"
           alt="Hotel Gulmohar building exterior"
-          className="absolute inset-0 w-full h-full object-cover object-[center_25%]"
+          className="absolute inset-0 w-full h-full object-cover object-[center_25%] group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-stone-900/85 via-stone-900/40 to-transparent" />
         <div className="relative z-10 h-full flex flex-col items-start justify-center px-10 md:px-20 max-w-xl">
@@ -526,11 +526,11 @@ export default function App() {
                 ))}
               </div>
             </div>
-            <div className="relative">
+            <div className="relative group overflow-hidden">
               <img
                 src="/image copy copy copy copy.png"
                 alt="Hotel Gulmohar reception lobby"
-                className="w-full h-96 md:h-[520px] object-cover shadow-xl"
+                className="w-full h-96 md:h-[520px] object-cover shadow-xl group-hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
