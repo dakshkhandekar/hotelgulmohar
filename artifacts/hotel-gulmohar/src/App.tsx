@@ -478,9 +478,10 @@ export default function App() {
       </section>
       {/* ── Quote / Divider ── */}
       <div className="group relative h-[60vh] min-h-[400px] w-full overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-fixed group-hover:scale-105 transition-transform duration-500"
-          style={{ backgroundImage: "url('/hotel-gulmohar-quote.png')", backgroundPosition: 'center 25%' }}
+        <img
+          src="/hotel-gulmohar-quote.png"
+          alt="Hotel Gulmohar building exterior"
+          className="absolute inset-0 w-full h-full object-cover object-[center_25%] group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-stone-900/85 via-stone-900/40 to-transparent" />
         <div className="relative z-10 h-full flex flex-col items-start justify-center px-10 md:px-20 max-w-xl">
