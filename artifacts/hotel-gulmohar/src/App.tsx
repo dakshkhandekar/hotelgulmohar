@@ -236,15 +236,15 @@ export default function App() {
       </div>
       {/* ── Fixed Navbar ── */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-          scrolled ? 'bg-stone-900 shadow-xl' : 'bg-stone-900/80 backdrop-blur-sm'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? 'bg-stone-900 shadow-xl py-2' : 'bg-stone-900/80 backdrop-blur-sm py-4'
         }`}
       >
         {/* Logo Row */}
-        <div className="flex items-center justify-between px-6 md:px-10 py-4">
+        <div className="flex items-center justify-between px-6 md:px-10">
           <div className="flex items-center gap-3">
-            <img src="/image copy copy.png" alt="Hotel Gulmohar Logo" className="w-12 h-12 object-contain" />
-            <span className="text-white font-serif text-xl tracking-widest uppercase">
+            <img src="/image copy copy.png" alt="Hotel Gulmohar Logo" className={`object-contain transition-all duration-300 ${scrolled ? "w-9 h-9" : "w-12 h-12"}`} />
+            <span className={`text-white font-serif tracking-widest uppercase transition-all duration-300 ${scrolled ? "text-lg" : "text-xl"}`}>
               Hotel Gulmohar
             </span>
           </div>
