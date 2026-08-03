@@ -522,7 +522,7 @@ export default function App() {
               <p className="text-stone-500 leading-relaxed mb-8">Today, we carry forward that same ethos with a team of over 100 dedicated hospitality professionals, world-class facilities, and an unwavering commitment to creating moments that matter.</p>
               <div className="grid grid-cols-3 gap-6">
                 {[
-                  { value: '50+', label: 'Years of Service' },
+                  { value: '35+', label: 'Years of Service' },
                   { value: '25', label: 'Rooms & Suites' },
                   { value: '4.9', label: 'Guest Rating' },
                 ].map(({ value, label }) => (
@@ -731,7 +731,7 @@ export default function App() {
               </div>
               <p className="text-sm leading-relaxed">
                 A timeless landmark of luxury and warmth. Your home
-                away from home.
+                away from home. <span className="block mt-2 text-xs text-stone-500">Since 1990</span>
               </p>
             </div>
             <div>
