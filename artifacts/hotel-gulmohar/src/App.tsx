@@ -384,11 +384,11 @@ export default function App() {
       <div className="bg-stone-900 py-6 px-6">
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
           {AMENITIES.map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center gap-3 text-white">
-              <div className="w-9 h-9 rounded-full bg-amber-400/10 border border-amber-400/30 flex items-center justify-center shrink-0">
-                <Icon className="w-4 h-4 text-amber-400" />
+            <div key={label} className="group flex items-center gap-3 text-white cursor-default">
+              <div className="w-9 h-9 rounded-full bg-amber-400/10 border border-amber-400/30 flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-amber-400/20 group-hover:border-amber-400/60 group-hover:shadow-[0_0_12px_rgba(251,191,36,0.4)]">
+                <Icon className="w-4 h-4 text-amber-400 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110" />
               </div>
-              <span className="text-sm text-stone-300">{label}</span>
+              <span className="text-sm text-stone-300 transition-colors duration-300 group-hover:text-white">{label}</span>
             </div>
           ))}
         </div>
