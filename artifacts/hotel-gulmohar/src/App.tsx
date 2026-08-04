@@ -176,6 +176,48 @@ function CountUp({ value }: { value: string }) {
   );
 }
 
+function TypewriterTitle() {
+  const lines = ['Hotel', 'Gulmohar'];
+  const [displayedLines, setDisplayedLines] = useState<string[]>(['', '']);
+  const [currentLine, setCurrentLine] = useState(0);
+  const [currentChar, setCurrentChar] = useState(0);
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    if (currentLine >= lines.length) {
+      setDone(true);
+      return;
+    }
+    const text = lines[currentLine];
+    if (currentChar < text.length) {
+      const timer = setTimeout(() => {
+        setDisplayedLines((prev) => {
+          const next = [...prev];
+          next[currentLine] = text.slice(0, currentChar + 1);
+          return next;
+        });
+        setCurrentChar((c) => c + 1);
+      }, 120);
+      return () => clearTimeout(timer);
+    } else {
+      const timer = setTimeout(() => {
+        setCurrentLine((l) => l + 1);
+        setCurrentChar(0);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [currentLine, currentChar]);
+
+  return (
+    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-tight mb-6">
+      {displayedLines[0]}
+      <br />
+      <span className="text-amber-400">{displayedLines[1]}</span>
+      {!done && <span className="inline-block w-[3px] h-[0.8em] bg-amber-400 ml-2 animate-pulse align-middle" />}
+    </h1>
+  );
+}
+
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
@@ -344,11 +386,7 @@ export default function App() {
           <p className="hero-stagger hero-stagger-1 text-amber-400 text-xs tracking-[0.4em] uppercase font-semibold mb-4">
             Welcome to Luxury
           </p>
-          <h1 className="hero-stagger hero-stagger-2 font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-tight mb-6">
-            Hotel
-            <br />
-            <span className="text-amber-400">Gulmohar</span>
-          </h1>
+          <TypewriterTitle />
           <p className="hero-stagger hero-stagger-3 text-stone-200 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
             Where timeless elegance meets modern comfort. Experience the art of
             exceptional hospitality in the heart of the city.
