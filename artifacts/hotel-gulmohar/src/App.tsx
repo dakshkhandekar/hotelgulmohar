@@ -566,10 +566,20 @@ export default function App() {
                 {[
                   { value: '35+', label: 'Years of Service' },
                   { value: '25', label: 'Rooms & Suites' },
-                  { value: '4.9', label: 'Guest Rating' },
+                  { value: '3.9', label: 'Guest Rating' },
                 ].map(({ value, label }) => (
                   <div key={label} className="text-center">
                     <CountUp value={value} />
+                    {label === 'Guest Rating' && (
+                      <div className="flex items-center justify-center gap-0.5 mb-1">
+                        {[1, 2, 3, 4, 5].map((i) => (
+                          <Star
+                            key={i}
+                            className={`w-3 h-3 ${i <= 3 ? 'text-amber-400 fill-amber-400' : i === 4 ? 'text-amber-400 fill-amber-400/40' : 'text-stone-300 fill-stone-300'}`}
+                          />
+                        ))}
+                      </div>
+                    )}
                     <div className="text-xs text-stone-400 tracking-wide uppercase">
                       {label}
                     </div>
@@ -775,6 +785,17 @@ export default function App() {
                 A timeless landmark of luxury and warmth. Your home
                 away from home. <span className="block mt-2 text-xs text-stone-500">Since 1990</span>
               </p>
+              <div className="flex items-center gap-2 mt-3">
+                <div className="flex items-center gap-0.5">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star
+                      key={i}
+                      className={`w-3.5 h-3.5 ${i <= 3 ? 'text-amber-400 fill-amber-400' : i === 4 ? 'text-amber-400 fill-amber-400/40' : 'text-stone-600 fill-stone-600'}`}
+                    />
+                  ))}
+                </div>
+                <span className="text-xs text-stone-400">3.9 on Google</span>
+              </div>
             </div>
             <div>
               <h4 className="text-white text-xs tracking-widest uppercase font-semibold mb-4">
