@@ -180,6 +180,96 @@ function CountUp({ value }: { value: string }) {
   );
 }
 
+function WeatherWidget() {
+  const [weather, setWeather] = useState<{ temp: number; feelsLike: number; humidity: number; code: number } | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=18.5308&longitude=73.1443&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.current) {
+          setWeather({
+            temp: Math.round(data.current.temperature_2m),
+            feelsLike: Math.round(data.current.apparent_temperature),
+            humidity: Math.round(data.current.relative_humidity_2m),
+            code: data.current.weather_code,
+          });
+        } else {
+          setError(true);
+        }
+        setLoading(false);
+      })
+      .catch(() => {
+        setError(true);
+        setLoading(false);
+      });
+  }, []);
+
+  const weatherEmoji = (code: number) => {
+    if (code <= 1) return '☀️';
+    if (code <= 3) return '⛅';
+    if (code <= 48) return '🌫️';
+    if (code <= 67) return '🌧️';
+    if (code <= 77) return '🌨️';
+    if (code <= 82) return '🌦️';
+    if (code <= 86) return '🌨️';
+    if (code <= 99) return '⛈️';
+    return '🌤️';
+  };
+
+  const weatherDesc = (code: number) => {
+    if (code <= 0) return 'Clear Sky';
+    if (code <= 1) return 'Mainly Clear';
+    if (code <= 2) return 'Partly Cloudy';
+    if (code <= 3) return 'Overcast';
+    if (code <= 48) return 'Foggy';
+    if (code <= 55) return 'Drizzle';
+    if (code <= 63) return 'Light Rain';
+    if (code <= 67) return 'Heavy Rain';
+    if (code <= 77) return 'Snow Grains';
+    if (code <= 82) return 'Rain Showers';
+    if (code <= 86) return 'Snow Showers';
+    if (code <= 99) return 'Thunderstorm';
+    return 'Fair';
+  };
+
+  return (
+    <div className="max-w-md mx-auto mt-10 mb-4">
+      <div className="flex items-center justify-center gap-2 mb-4">
+        <span className="text-xs tracking-[0.3em] uppercase font-semibold text-stone-400">
+          Current Weather
+        </span>
+      </div>
+      {loading && (
+        <div className="flex items-center justify-center gap-2 py-6 text-stone-400">
+          <div className="w-4 h-4 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />
+          <span className="text-sm">Loading weather...</span>
+        </div>
+      )}
+      {error && !loading && (
+        <div className="text-center py-6 text-stone-400 text-sm">
+          Weather temporarily unavailable
+        </div>
+      )}
+      {weather && !loading && !error && (
+        <div className="flex items-center justify-center gap-5 p-6 border border-stone-100 bg-stone-50">
+          <span className="text-4xl">{weatherEmoji(weather.code)}</span>
+          <div>
+            <p className="font-serif text-3xl text-stone-900">{weather.temp}°C</p>
+            <p className="text-sm text-stone-500">{weatherDesc(weather.code)}</p>
+          </div>
+          <div className="border-l border-stone-200 pl-5">
+            <p className="text-xs text-stone-400">Feels like {weather.feelsLike}°C</p>
+            <p className="text-xs text-stone-400 mt-1">Humidity {weather.humidity}%</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function TypewriterTitle() {
   const lines = ['Hotel', 'Gulmohar'];
   const [displayedLines, setDisplayedLines] = useState<string[]>(['', '']);
@@ -645,6 +735,9 @@ export default function App() {
               </div>
             </a>
           </div>
+
+          {/* ── Weather Widget ── */}
+          <WeatherWidget />
 
           {/* ── Map Widget ── */}
           <div className="mt-12">
