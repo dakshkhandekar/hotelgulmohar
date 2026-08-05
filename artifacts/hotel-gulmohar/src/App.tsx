@@ -750,7 +750,7 @@ export default function App() {
             <div className="relative shadow-lg border border-stone-100 overflow-hidden">
               <iframe
                 title="Hotel Gulmohar location on Google Maps"
-                src="https://maps.google.com/maps?q=18.530805,73.144267src="https://maps.google.com/maps?q=18.530805,73.144267&z=20&hl=en&output=embed"z=19src="https://maps.google.com/maps?q=18.530805,73.144267&z=20&hl=en&output=embed"hl=ensrc="https://maps.google.com/maps?q=18.530805,73.144267&z=20&hl=en&output=embed"output=embedsrc="https://maps.google.com/maps?q=18.530805,73.144267&z=20&hl=en&output=embed"t=k"
+                src="https://maps.google.com/maps?q=18.530805,73.144267&z=20&hl=en&output=embed"https://maps.google.com/maps?q=18.530805,73.144267&z=20&hl=en&output=embed"z=19src="https://maps.google.com/maps?q=18.530805,73.144267&z=20&hl=en&output=embed"hl=ensrc="https://maps.google.com/maps?q=18.530805,73.144267&z=20&hl=en&output=embed"output=embedsrc="https://maps.google.com/maps?q=18.530805,73.144267&z=20&hl=en&output=embed"t=k"
                 className="w-full h-[400px] block border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
