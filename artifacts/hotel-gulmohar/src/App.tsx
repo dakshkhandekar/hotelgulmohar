@@ -33,7 +33,7 @@ const ROOMS = [
     guests: '2 Guests',
     price: '$180',
     desc: 'Elegantly appointed with premium amenities, a comfortable king bed, and warm wooden furnishings for a luxurious stay.',
-    image: '/image copy copy copy.png',
+    image: '/image copy copy copy.webp',
   },
   {
     name: 'Suite',
@@ -41,7 +41,7 @@ const ROOMS = [
     guests: '2-3 Guests',
     price: '$340',
     desc: 'Spacious suite with a separate living area, elegant decor, and premium furnishings for the ultimate comfort.',
-    image: '/images/suite-room.jpg',
+    image: '/images/suite-room.webp',
   },
 ];
 
@@ -51,8 +51,8 @@ const DINING = [
     type: 'Fine Dining',
     hours: '',
     desc: 'An award-winning restaurant offering contemporary cuisine with locally sourced ingredients and breathtaking views.',
-    image: '/dining-banquet-hall.png',
-    images: ['/dining-banquet-hall.png', '/banquet-hall-angle2.png', '/banquet-hall-angle3.png'],
+    image: '/dining-banquet-hall.webp',
+    images: ['/dining-banquet-hall.webp', '/banquet-hall-angle2.webp', '/banquet-hall-angle3.webp'],
     interval: 5000,
   },
   {
@@ -60,8 +60,8 @@ const DINING = [
     type: 'Lounge & Bar',
     hours: '',
     desc: 'A multi-cuisine restaurant serving freshly prepared dishes with bold flavors and locally sourced ingredients — a feast for every palate.',
-    image: '/food-1.png',
-    images: ['/food-1.png', '/food-2.png', '/food-3.png', '/food-4.png'],
+    image: '/food-1.webp',
+    images: ['/food-1.webp', '/food-2.webp', '/food-3.webp', '/food-4.webp'],
     interval: 6000,
   },
 ];
@@ -96,7 +96,7 @@ function DiningCard({ venue }: { venue: typeof DINING[0] }) {
             src={src}
             alt={venue.name}
             className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${i === current ? 'opacity-100' : 'opacity-0'}`}
-          />
+           loading="lazy" decoding="async" />
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent" />
         <div className="absolute bottom-4 left-4 text-amber-400 text-2xl drop-shadow-lg">★</div>
@@ -379,7 +379,7 @@ export default function App() {
         {/* Logo Row */}
         <div className="flex items-center justify-between px-6 md:px-10">
           <div className="flex items-center gap-3">
-            <img src="/image copy copy.png" alt="Hotel Gulmohar Logo" className={`object-contain transition-all duration-300 ${scrolled ? "w-9 h-9" : "w-12 h-12"}`} />
+            <img src="/image copy copy.webp" alt="Hotel Gulmohar Logo" className={`object-contain transition-all duration-300 ${scrolled ? "w-9 h-9" : "w-12 h-12"}`} loading="eager" decoding="async" />
             <span className={`text-white font-serif tracking-widest uppercase transition-all duration-300 ${scrolled ? "text-lg" : "text-xl"}`}>
               Hotel Gulmohar
             </span>
@@ -472,7 +472,7 @@ export default function App() {
       >
         <div
           className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{ backgroundImage: "url('/image copy.png')" }}
+          style={{ backgroundImage: "url('/image copy.webp')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/60 via-stone-900/30 to-stone-900/70" />
 
@@ -557,7 +557,7 @@ export default function App() {
                     src={room.image}
                     alt={room.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                   loading="lazy" decoding="async" />
   
                 </div>
                 <div className="p-6">
@@ -611,10 +611,10 @@ export default function App() {
       {/* ── Quote / Divider ── */}
       <div className="group relative h-[60vh] min-h-[400px] w-full overflow-hidden">
         <img
-          src="/hotel-gulmohar-quote.png"
+          src="/hotel-gulmohar-quote.webp"
           alt="Hotel Gulmohar building exterior"
           className="absolute inset-0 w-full h-full object-cover object-[center_25%] group-hover:scale-105 transition-transform duration-500"
-        />
+         loading="lazy" decoding="async" />
         <div className="absolute inset-0 bg-gradient-to-r from-stone-900/85 via-stone-900/40 to-transparent" />
         <div className="relative z-10 h-full flex flex-col items-start justify-center px-10 md:px-20 max-w-xl">
           <p className="text-amber-400 text-4xl font-serif leading-none mb-3">"</p>
@@ -679,10 +679,10 @@ export default function App() {
             </div>
             <div className="relative group overflow-hidden">
               <img
-                src="/image copy copy copy copy.png"
+                src="/image copy copy copy copy.webp"
                 alt="Hotel Gulmohar reception lobby"
                 className="w-full h-96 md:h-[520px] object-cover shadow-xl group-hover:scale-105 transition-transform duration-500"
-              />
+               loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -801,37 +801,37 @@ export default function App() {
             {[
               {
                 name: 'Ballaleshwar Pali Temple',
-                image: '/attraction-temple.png',
+                image: '/attraction-temple.webp',
                 desc: 'One of the eight sacred Ashtavinayak temples, a revered Ganesha shrine just 20 km away.',
                 imgClass: 'w-full h-full object-cover object-bottom hover:scale-105 transition-transform duration-500',
               },
               {
                 name: 'Sudhagad Fort',
-                image: '/attraction-fort.png',
+                image: '/attraction-fort.webp',
                 desc: 'A majestic hilltop fort surrounded by lush Sahyadri greenery, 15 km away — perfect for trekking enthusiasts.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
               {
                 name: 'Kashid Beach',
-                image: '/attraction-beach.png',
+                image: '/attraction-beach.webp',
                 desc: 'A serene golden beach on the Konkan coast, 50 km away — perfect for sunsets and peaceful evening walks.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
               {
                 name: 'Birla Mandir',
-                image: '/attraction-birla.png',
+                image: '/attraction-birla.webp',
                 desc: 'A stunning white marble temple dedicated to Lord Vishnu, 55 km away — offering a serene spiritual experience.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
               {
                 name: 'Murud Beach',
-                image: '/attraction-murud-beach.png',
+                image: '/attraction-murud-beach.webp',
                 desc: 'A pristine and lesser-explored beach on the Konkan coast, 65 km away — known for its calm waters, coconut palms, and stunning shoreline.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
               {
                 name: 'Raigad Fort',
-                image: '/attraction-raigad-fort.png',
+                image: '/attraction-raigad-fort.webp',
                 desc: 'The legendary capital of Chhatrapati Shivaji Maharaj\'s empire, 60 km away — a must-visit hilltop fort steeped in Maratha history.',
                 imgClass: 'w-full h-full object-cover hover:scale-105 transition-transform duration-500',
               },
@@ -845,7 +845,7 @@ export default function App() {
                     src={place.image}
                     alt={place.name}
                     className={place.imgClass}
-                  />
+                   loading="lazy" decoding="async" />
                 </div>
                 <div className="p-4">
                   <h3 className="font-serif text-base text-stone-900 mb-1">
