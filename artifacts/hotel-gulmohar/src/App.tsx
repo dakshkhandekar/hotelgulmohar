@@ -135,6 +135,7 @@ function CountUp({ value }: { value: string }) {
   const decimals = match && match[2].includes('.') ? match[2].split('.')[1].length : 0;
 
   const [display, setDisplay] = useState(0);
+  const [pulsed, setPulsed] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const hasRun = useRef(false);
 
@@ -156,7 +157,10 @@ function CountUp({ value }: { value: string }) {
           const eased = 1 - Math.pow(1 - progress, 3);
           setDisplay(target * eased);
           if (progress < 1) requestAnimationFrame(tick);
-          else setDisplay(target);
+          else {
+            setDisplay(target);
+            setTimeout(() => setPulsed(true), 100);
+          }
         };
         requestAnimationFrame(tick);
       },
@@ -168,7 +172,7 @@ function CountUp({ value }: { value: string }) {
   }, [target]);
 
   return (
-    <div ref={ref} className="font-serif text-3xl text-stone-900 mb-1 tabular-nums">
+    <div ref={ref} className={`font-serif text-3xl text-stone-900 mb-1 tabular-nums transition-all duration-500 ${pulsed ? 'text-amber-500 drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]' : ''}`}>
       {prefix}
       {display.toFixed(decimals)}
       {suffix}
