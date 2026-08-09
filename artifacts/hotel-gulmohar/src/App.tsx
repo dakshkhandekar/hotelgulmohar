@@ -765,7 +765,7 @@ export default function App() {
           <div className="hero-stagger hero-stagger-4 flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#accommodation"
-              className="group px-8 py-4 bg-amber-400 text-stone-900 text-sm font-bold tracking-widest uppercase hover:bg-amber-300 transition-colors duration-200 flex items-center justify-center gap-2"
+              className="group px-8 py-4 bg-amber-400 text-stone-900 text-sm font-bold tracking-widest uppercase rounded-lg hover:bg-amber-300 transition-colors duration-200 flex items-center justify-center gap-2"
             >
               Discover More
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -778,7 +778,7 @@ export default function App() {
             </button>
             <a
               href="tel:+919157912719"
-              className="px-8 py-4 border border-white/50 text-white text-sm font-bold tracking-widest uppercase hover:bg-white/10 transition-colors duration-200 flex items-center justify-center"
+              className="px-8 py-4 border border-white/50 text-white text-sm font-bold tracking-widest uppercase rounded-lg hover:bg-white/10 transition-colors duration-200 flex items-center justify-center"
             >
               Contact Us
             </a>
