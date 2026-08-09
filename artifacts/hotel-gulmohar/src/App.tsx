@@ -91,7 +91,7 @@ function BookingForm({ isOpen, onClose, onOpenConfirm, bookingData, setBookingDa
                 type="text"
                 value={bookingData.name || ''}
                 onChange={(e) => setBookingData({ ...bookingData, name: e.target.value })}
-                placeholder="John Doe"
+                placeholder="Enter your full name"
                 className={inputClass('name')}
               />
               {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
@@ -102,7 +102,7 @@ function BookingForm({ isOpen, onClose, onOpenConfirm, bookingData, setBookingDa
                 type="tel"
                 value={bookingData.phone || ''}
                 onChange={(e) => setBookingData({ ...bookingData, phone: e.target.value })}
-                placeholder="+91 98765 43210"
+                placeholder="Enter your phone number"
                 className={inputClass('phone')}
               />
               {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
@@ -115,7 +115,7 @@ function BookingForm({ isOpen, onClose, onOpenConfirm, bookingData, setBookingDa
               type="email"
               value={bookingData.email || ''}
               onChange={(e) => setBookingData({ ...bookingData, email: e.target.value })}
-              placeholder="john@example.com"
+              placeholder="Enter your email address"
               className={inputClass('email')}
             />
             {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
