@@ -70,10 +70,13 @@ function BookingForm({ isOpen, onClose, onOpenConfirm, bookingData, setBookingDa
   const inputClass = (field) =>
     `w-full px-4 py-3 bg-stone-50 border rounded-lg text-sm text-stone-900 placeholder-stone-400 outline-none transition-colors ${errors[field] ? 'border-red-400' : 'border-stone-200 focus:border-amber-400'}`;
 
+  const guestsCount = parseInt(bookingData.guests, 10);
+  const showRoomCount = guestsCount > 2 || bookingData.guests === '6+';
+
   return (
     <Dialog open={isOpen} onOpenChange={(o) => !o && onClose()}>
-      <DialogContent className="max-w-lg p-0 overflow-hidden rounded-2xl">
-        <div className="bg-stone-900 px-6 py-5 flex items-center justify-between">
+      <DialogContent className="max-w-lg p-0 overflow-hidden rounded-2xl max-h-[90vh] flex flex-col">
+        <div className="bg-stone-900 px-6 py-5 flex items-center justify-between shrink-0">
           <div>
             <h2 className="font-serif text-xl text-amber-400">Book Your Stay</h2>
             <p className="text-stone-400 text-xs mt-0.5">Fill in your details and we'll get back to you</p>
@@ -83,7 +86,7 @@ function BookingForm({ isOpen, onClose, onOpenConfirm, bookingData, setBookingDa
           </button>
         </div>
 
-        <div className="px-6 py-5 space-y-4 max-h-[60vh] overflow-y-auto">
+        <div className="px-6 py-5 space-y-4 overflow-y-auto flex-1 min-h-0">
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs font-medium text-stone-600 mb-1.5 block">Full Name *</label>
@@ -180,6 +183,24 @@ function BookingForm({ isOpen, onClose, onOpenConfirm, bookingData, setBookingDa
             </div>
           </div>
 
+          {showRoomCount && (
+            <div>
+              <label className="text-xs font-medium text-stone-600 mb-1.5 block flex items-center gap-1">
+                <Bed className="w-3.5 h-3.5" /> No. of Rooms
+              </label>
+              <select
+                value={bookingData.roomCount || '1'}
+                onChange={(e) => setBookingData({ ...bookingData, roomCount: e.target.value })}
+                className={inputClass('roomCount')}
+              >
+                <option value="1">1 Room</option>
+                <option value="2">2 Rooms</option>
+                <option value="3">3 Rooms</option>
+                <option value="4+">4+ Rooms</option>
+              </select>
+            </div>
+          )}
+
           <div>
             <label className="text-xs font-medium text-stone-600 mb-1.5 block">Special Requests</label>
             <textarea
@@ -192,10 +213,10 @@ function BookingForm({ isOpen, onClose, onOpenConfirm, bookingData, setBookingDa
           </div>
         </div>
 
-        <div className="px-6 py-4 bg-stone-50 border-t border-stone-100">
+        <div className="px-6 py-4 bg-stone-50 border-t border-stone-100 shrink-0">
           <button
             onClick={handleSubmit}
-            className="w-full py-3.5 bg-amber-400 text-stone-900 text-sm font-bold tracking-widest uppercase rounded-lg hover:bg-amber-300 transition-colors duration-200"
+            className="w-full py-3.5 bg-amber-400 text-stone-900 text-sm font-bold tracking-widest uppercase rounded-lg shadow-md hover:bg-amber-300 transition-colors duration-200"
           >
             Book Now
           </button>
@@ -216,7 +237,7 @@ function ConfirmBooking({ isOpen, onClose, onConfirm, bookingData, submitting })
           <AlertDialogDescription className="text-sm text-stone-600 space-y-1 mt-2">
             <span className="block"><strong>Guest:</strong> {bookingData.name}</span>
             <span className="block"><strong>Dates:</strong> {bookingData.checkIn} → {bookingData.checkOut}</span>
-            <span className="block"><strong>Guests:</strong> {bookingData.guests} · <strong>Room:</strong> {bookingData.roomType || 'Any'}</span>
+            <span className="block"><strong>Guests:</strong> {bookingData.guests} · <strong>Room:</strong> {bookingData.roomType || 'Any'}{bookingData.roomCount ? ` · ${bookingData.roomCount} Room(s)` : ''}</span>
             <span className="block mt-2 text-xs text-stone-400">We'll send your booking details to Hotel Gulmohar and email you a confirmation.</span>
           </AlertDialogDescription>
         </AlertDialogHeader>
