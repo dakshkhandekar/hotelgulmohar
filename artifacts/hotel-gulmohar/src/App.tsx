@@ -171,13 +171,11 @@ function BookingForm({ isOpen, onClose, onOpenConfirm, bookingData, setBookingDa
             <div>
               <label className="text-xs font-medium text-stone-600 mb-1.5 block">Room Type</label>
               <select
-                value={bookingData.roomType || ''}
+                value={bookingData.roomType || 'Deluxe Room'}
                 onChange={(e) => setBookingData({ ...bookingData, roomType: e.target.value })}
                 className={inputClass('roomType')}
               >
-                <option value="">Any</option>
                 <option value="Deluxe Room">Deluxe Room</option>
-                <option value="Suite">Suite</option>
               </select>
             </div>
           </div>
@@ -284,14 +282,6 @@ const ROOMS = [
     price: '$180',
     desc: 'Elegantly appointed with premium amenities, a comfortable king bed, and warm wooden furnishings for a luxurious stay.',
     image: '/image copy copy copy.webp',
-  },
-  {
-    name: 'Suite',
-    size: '68 sqm',
-    guests: '2-3 Guests',
-    price: '$340',
-    desc: 'Spacious suite with a separate living area, elegant decor, and premium furnishings for the ultimate comfort.',
-    image: '/images/suite-room.webp',
   },
 ];
 
@@ -824,12 +814,12 @@ export default function App() {
             </h2>
             <div className="w-16 h-0.5 bg-amber-400 mx-auto mb-6" />
             <p className="text-stone-500 max-w-xl mx-auto text-base leading-relaxed">
-              Each room and suite is a sanctuary of calm, crafted with meticulous
+              Each room is a sanctuary of calm, crafted with meticulous
               attention to detail and stocked with the finest amenities.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-1 gap-8 max-w-md mx-auto">
             {ROOMS.map((room) => (
               <div
                 key={room.name}
@@ -938,7 +928,7 @@ export default function App() {
               <div className="grid grid-cols-3 gap-6">
                 {[
                   { value: '35+', label: 'Years of Service' },
-                  { value: '25', label: 'Rooms & Suites' },
+                  { value: '25', label: 'Rooms' },
                   { value: '3.9', label: 'Guest Rating' },
                 ].map(({ value, label }) => (
                   <div key={label} className="text-center">
