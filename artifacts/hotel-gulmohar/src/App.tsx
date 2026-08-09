@@ -16,7 +16,257 @@ import {
   Baby,
   ArrowRight,
   Clock,
+  X,
+  CalendarDays,
+  Users,
+  CheckCircle2,
+  Loader2,
 } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
+
+
+const BOOKING_API_URL = 'https://elio-5de63fad.base44.app/functions/sendBookingEmail';
+
+function BookingForm({ isOpen, onClose, onOpenConfirm, bookingData, setBookingData }) {
+  const [submitting, setSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const e = {};
+    if (!bookingData.name?.trim()) e.name = 'Required';
+    if (!bookingData.email?.trim()) e.email = 'Required';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(bookingData.email)) e.email = 'Invalid email';
+    if (!bookingData.phone?.trim()) e.phone = 'Required';
+    if (!bookingData.checkIn) e.checkIn = 'Required';
+    if (!bookingData.checkOut) e.checkOut = 'Required';
+    if (bookingData.checkIn && bookingData.checkOut && bookingData.checkOut <= bookingData.checkIn) {
+      e.checkOut = 'Must be after check-in';
+    }
+    if (!bookingData.guests) e.guests = 'Required';
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
+
+  const handleSubmit = () => {
+    if (!validate()) return;
+    onOpenConfirm();
+  };
+
+  const inputClass = (field) =>
+    `w-full px-4 py-3 bg-stone-50 border rounded-lg text-sm text-stone-900 placeholder-stone-400 outline-none transition-colors ${errors[field] ? 'border-red-400' : 'border-stone-200 focus:border-amber-400'}`;
+
+  return (
+    <Dialog open={isOpen} onOpenChange={(o) => !o && onClose()}>
+      <DialogContent className="max-w-lg p-0 overflow-hidden rounded-2xl">
+        <div className="bg-stone-900 px-6 py-5 flex items-center justify-between">
+          <div>
+            <h2 className="font-serif text-xl text-amber-400">Book Your Stay</h2>
+            <p className="text-stone-400 text-xs mt-0.5">Fill in your details and we'll get back to you</p>
+          </div>
+          <button onClick={onClose} className="text-stone-400 hover:text-white transition-colors">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        <div className="px-6 py-5 space-y-4 max-h-[60vh] overflow-y-auto">
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="text-xs font-medium text-stone-600 mb-1.5 block">Full Name *</label>
+              <input
+                type="text"
+                value={bookingData.name || ''}
+                onChange={(e) => setBookingData({ ...bookingData, name: e.target.value })}
+                placeholder="John Doe"
+                className={inputClass('name')}
+              />
+              {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+            </div>
+            <div>
+              <label className="text-xs font-medium text-stone-600 mb-1.5 block">Phone *</label>
+              <input
+                type="tel"
+                value={bookingData.phone || ''}
+                onChange={(e) => setBookingData({ ...bookingData, phone: e.target.value })}
+                placeholder="+91 98765 43210"
+                className={inputClass('phone')}
+              />
+              {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+            </div>
+          </div>
+
+          <div>
+            <label className="text-xs font-medium text-stone-600 mb-1.5 block">Email *</label>
+            <input
+              type="email"
+              value={bookingData.email || ''}
+              onChange={(e) => setBookingData({ ...bookingData, email: e.target.value })}
+              placeholder="john@example.com"
+              className={inputClass('email')}
+            />
+            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="text-xs font-medium text-stone-600 mb-1.5 block flex items-center gap-1">
+                <CalendarDays className="w-3.5 h-3.5" /> Check-In *
+              </label>
+              <input
+                type="date"
+                value={bookingData.checkIn || ''}
+                onChange={(e) => setBookingData({ ...bookingData, checkIn: e.target.value })}
+                className={inputClass('checkIn')}
+              />
+              {errors.checkIn && <p className="text-red-500 text-xs mt-1">{errors.checkIn}</p>}
+            </div>
+            <div>
+              <label className="text-xs font-medium text-stone-600 mb-1.5 block flex items-center gap-1">
+                <CalendarDays className="w-3.5 h-3.5" /> Check-Out *
+              </label>
+              <input
+                type="date"
+                value={bookingData.checkOut || ''}
+                onChange={(e) => setBookingData({ ...bookingData, checkOut: e.target.value })}
+                className={inputClass('checkOut')}
+              />
+              {errors.checkOut && <p className="text-red-500 text-xs mt-1">{errors.checkOut}</p>}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="text-xs font-medium text-stone-600 mb-1.5 block flex items-center gap-1">
+                <Users className="w-3.5 h-3.5" /> Guests *
+              </label>
+              <select
+                value={bookingData.guests || ''}
+                onChange={(e) => setBookingData({ ...bookingData, guests: e.target.value })}
+                className={inputClass('guests')}
+              >
+                <option value="">Select</option>
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5 Guests</option>
+                <option value="6+">6+ Guests</option>
+              </select>
+              {errors.guests && <p className="text-red-500 text-xs mt-1">{errors.guests}</p>}
+            </div>
+            <div>
+              <label className="text-xs font-medium text-stone-600 mb-1.5 block">Room Type</label>
+              <select
+                value={bookingData.roomType || ''}
+                onChange={(e) => setBookingData({ ...bookingData, roomType: e.target.value })}
+                className={inputClass('roomType')}
+              >
+                <option value="">Any</option>
+                <option value="Deluxe Room">Deluxe Room</option>
+                <option value="Suite">Suite</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label className="text-xs font-medium text-stone-600 mb-1.5 block">Special Requests</label>
+            <textarea
+              value={bookingData.message || ''}
+              onChange={(e) => setBookingData({ ...bookingData, message: e.target.value })}
+              placeholder="Any special requirements? (optional)"
+              rows={3}
+              className={`${inputClass('message')} resize-none`}
+            />
+          </div>
+        </div>
+
+        <div className="px-6 py-4 bg-stone-50 border-t border-stone-100">
+          <button
+            onClick={handleSubmit}
+            className="w-full py-3.5 bg-amber-400 text-stone-900 text-sm font-bold tracking-widest uppercase rounded-lg hover:bg-amber-300 transition-colors duration-200"
+          >
+            Book Now
+          </button>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+function ConfirmBooking({ isOpen, onClose, onConfirm, bookingData, submitting }) {
+  return (
+    <AlertDialog open={isOpen} onOpenChange={(o) => !o && onClose()}>
+      <AlertDialogContent className="rounded-2xl">
+        <AlertDialogHeader>
+          <AlertDialogTitle className="font-serif text-lg text-stone-900">
+            Confirm your booking?
+          </AlertDialogTitle>
+          <AlertDialogDescription className="text-sm text-stone-600 space-y-1 mt-2">
+            <span className="block"><strong>Guest:</strong> {bookingData.name}</span>
+            <span className="block"><strong>Dates:</strong> {bookingData.checkIn} → {bookingData.checkOut}</span>
+            <span className="block"><strong>Guests:</strong> {bookingData.guests} · <strong>Room:</strong> {bookingData.roomType || 'Any'}</span>
+            <span className="block mt-2 text-xs text-stone-400">We'll send your booking details to Hotel Gulmohar and email you a confirmation.</span>
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter className="flex gap-2">
+          <AlertDialogCancel className="rounded-lg">Cancel</AlertDialogCancel>
+          <AlertDialogAction
+            onClick={onConfirm}
+            disabled={submitting}
+            className="bg-amber-400 text-stone-900 hover:bg-amber-300 rounded-lg"
+          >
+            {submitting ? (
+              <span className="flex items-center gap-2">
+                <Loader2 className="w-4 h-4 animate-spin" /> Sending...
+              </span>
+            ) : (
+              'Yes, Confirm Booking'
+            )}
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}
+
+function BookingSuccess({ isOpen, onClose }) {
+  return (
+    <Dialog open={isOpen} onOpenChange={(o) => !o && onClose()}>
+      <DialogContent className="max-w-sm p-0 rounded-2xl overflow-hidden">
+        <div className="px-6 py-10 text-center">
+          <div className="w-16 h-16 mx-auto rounded-full bg-green-100 flex items-center justify-center mb-4">
+            <CheckCircle2 className="w-9 h-9 text-green-600" />
+          </div>
+          <h2 className="font-serif text-xl text-stone-900 mb-2">Booking Request Sent!</h2>
+          <p className="text-sm text-stone-600 mb-6">
+            We've received your booking request and sent you a confirmation email.
+            Our team will contact you shortly to confirm your reservation.
+          </p>
+          <button
+            onClick={onClose}
+            className="px-6 py-3 bg-stone-900 text-white text-sm font-semibold rounded-lg hover:bg-stone-800 transition-colors"
+          >
+            Close
+          </button>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
 
 const NAV_LINKS = [
   { id: 'home', label: 'Home', icon: Home },
@@ -316,8 +566,35 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [bookingSuccess, setBookingSuccess] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [bookingData, setBookingData] = useState({});
   const [scrollProgress, setScrollProgress] = useState(0);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+
+  const handleBookingSubmit = async () => {
+    setSubmitting(true);
+    try {
+      const res = await fetch(BOOKING_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bookingData),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        setConfirmOpen(false);
+        setBookingOpen(false);
+        setBookingSuccess(true);
+      } else {
+        alert('Something went wrong. Please try again or call us.');
+      }
+    } catch (err) {
+      alert('Network error. Please try again or call us.');
+    }
+    setSubmitting(false);
+  };
   const fadeRefs = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
@@ -487,12 +764,18 @@ export default function App() {
           </p>
           <div className="hero-stagger hero-stagger-4 flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:booking@hotelgulmohar.com"
+              href="#accommodation"
               className="group px-8 py-4 bg-amber-400 text-stone-900 text-sm font-bold tracking-widest uppercase hover:bg-amber-300 transition-colors duration-200 flex items-center justify-center gap-2"
             >
               Discover More
-              <Mail className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
             </a>
+            <button
+              onClick={() => setBookingOpen(true)}
+              className="px-8 py-4 bg-stone-900/80 backdrop-blur-sm text-amber-400 text-sm font-bold tracking-widest uppercase border border-amber-400/50 hover:bg-amber-400 hover:text-stone-900 transition-all duration-200 flex items-center justify-center gap-2"
+            >
+              Book Now
+            </button>
             <a
               href="tel:+919157912719"
               className="px-8 py-4 border border-white/50 text-white text-sm font-bold tracking-widest uppercase hover:bg-white/10 transition-colors duration-200 flex items-center justify-center"
@@ -933,6 +1216,28 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      <BookingForm
+        isOpen={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+        onOpenConfirm={() => setConfirmOpen(true)}
+        bookingData={bookingData}
+        setBookingData={setBookingData}
+      />
+      <ConfirmBooking
+        isOpen={confirmOpen}
+        onClose={() => setConfirmOpen(false)}
+        onConfirm={handleBookingSubmit}
+        bookingData={bookingData}
+        submitting={submitting}
+      />
+      <BookingSuccess
+        isOpen={bookingSuccess}
+        onClose={() => {
+          setBookingSuccess(false);
+          setBookingData({});
+        }}
+      />
     </div>
   );
 }
