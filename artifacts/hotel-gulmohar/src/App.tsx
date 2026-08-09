@@ -772,7 +772,7 @@ export default function App() {
             </a>
             <button
               onClick={() => setBookingOpen(true)}
-              className="px-8 py-4 bg-stone-900/80 backdrop-blur-sm text-amber-400 text-sm font-bold tracking-widest uppercase border border-amber-400/50 hover:bg-amber-400 hover:text-stone-900 transition-all duration-200 flex items-center justify-center gap-2"
+              className="relative px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-500 text-stone-900 text-sm font-bold tracking-widest uppercase rounded-lg shadow-[0_0_20px_rgba(251,191,36,0.5)] hover:shadow-[0_0_30px_rgba(251,191,36,0.7)] hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2 animate-[pulse-glow_2s_ease-in-out_infinite]"
             >
               Book Now
             </button>

@@ -32,3 +32,8 @@
     }
   }
 }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(251,191,36,0.4); }
+  50% { box-shadow: 0 0 35px rgba(251,191,36,0.7); }
+}
